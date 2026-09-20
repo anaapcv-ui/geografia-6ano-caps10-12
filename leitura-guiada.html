@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leitura Guiada — Geografia 6º ano | GeoAventura 🌍</title>
+<style>
+  :root{
+    --cream:#fdfaf3; --ink:#2c3a2f; --green:#2e8b57; --green-d:#20694a;
+    --blue:#2f80c4; --orange:#e08a2e; --terra:#c0562f; --sun:#f6c453;
+    --card:#ffffff; --line:#e6e0d2; --soft:#f3efe3;
+    --ok:#2e8b57; --warn:#e0a020; --red:#d64545;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;font-size:18px}
+  a{color:var(--green-d)}
+  .wrap{max-width:900px;margin:0 auto;padding:16px}
+  header.top{background:linear-gradient(135deg,#8fd6a9,#2e8b57);color:#fff;border-radius:20px;padding:26px 24px;margin:12px 0 8px;box-shadow:0 6px 20px rgba(46,139,87,.25)}
+  header.top h1{margin:0 0 6px;font-size:28px}
+  header.top p{margin:0;opacity:.95;font-size:16px}
+  .badge{display:inline-block;background:rgba(255,255,255,.25);border-radius:999px;padding:4px 12px;font-size:14px;margin-top:8px}
+  nav.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+  nav.tabs a{background:#fff;border:2px solid var(--line);border-radius:999px;padding:8px 14px;text-decoration:none;color:var(--ink);font-weight:600;font-size:15px}
+  nav.tabs a.active{background:var(--green);border-color:var(--green);color:#fff}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin:14px 0;box-shadow:0 3px 10px rgba(0,0,0,.04)}
+  .howto{background:var(--soft);border-left:6px solid var(--sun)}
+  .howto h2{margin-top:0}
+  .save-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#fff;border:1px dashed var(--line);border-radius:14px;padding:10px 14px;font-size:14px;margin:10px 0}
+  .save-bar button{cursor:pointer;border:none;border-radius:10px;padding:8px 12px;font-weight:600;font-size:14px}
+  .btn-exp{background:#dff0e6;color:var(--green-d)}
+  .btn-imp{background:#dcebf7;color:#1e5f96}
+  .btn-zero{background:#f7e0e0;color:#a83232}
+  #saveInfo{color:#8a8674;margin-left:auto}
+  .block{border:1px solid var(--line);border-radius:16px;margin:16px 0;overflow:hidden;background:#fff}
+  .block.locked{opacity:.55}
+  .block-head{padding:14px 18px;font-weight:700;font-size:20px;color:#fff;display:flex;align-items:center;gap:10px;cursor:pointer}
+  .block-body{padding:4px 18px 18px}
+  .block-status{margin-left:auto;font-size:15px;background:rgba(255,255,255,.25);border-radius:999px;padding:2px 10px}
+  .h-green{background:var(--green)} .h-blue{background:var(--blue)} .h-orange{background:var(--orange)} .h-terra{background:var(--terra)}
+  .txt p{margin:10px 0}
+  .keyword{background:#fff2cc;border-radius:5px;padding:0 4px;font-weight:700}
+  .q{background:var(--soft);border-radius:12px;padding:12px 14px;margin:12px 0;border:1px solid var(--line)}
+  .q.red{border:2px solid var(--red);background:#fdeeee}
+  .q .tag{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:2px 8px;margin-bottom:6px}
+  .tag-con{background:#dcebf7;color:#1e5f96}
+  .tag-apl{background:#e3f3e9;color:var(--green-d)}
+  .q label{font-weight:600;display:block;margin-bottom:6px}
+  .q textarea{width:100%;min-height:64px;border:1px solid var(--line);border-radius:10px;padding:8px;font-family:inherit;font-size:16px;resize:vertical}
+  .alert{border-radius:10px;padding:10px 12px;margin:8px 0;font-size:15px;display:none}
+  .alert.copy{background:#fff6e0;border:1px solid var(--warn);color:#8a6300;display:block}
+  .alert.redwarn{background:#fdeeee;border:1px solid var(--red);color:#a83232;display:block}
+  .modelo{display:none;margin-top:10px;background:#eef7f0;border:1px solid #cfe6d6;border-radius:10px;padding:10px 12px}
+  .modelo.show{display:block}
+  .modelo .mtitle{font-weight:700;color:var(--green-d);margin-bottom:4px}
+  .chk{margin-top:8px}
+  .chk .cline{display:flex;align-items:center;gap:8px;margin:6px 0;flex-wrap:wrap}
+  .chk .cline span{flex:1;min-width:180px}
+  .chk button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:4px 12px;cursor:pointer;font-weight:600}
+  .chk button.sel-sim{background:var(--ok);color:#fff;border-color:var(--ok)}
+  .chk button.sel-nao{background:var(--red);color:#fff;border-color:var(--red)}
+  .conferir{background:var(--green);color:#fff;border:none;border-radius:12px;padding:10px 18px;font-weight:700;font-size:16px;cursor:pointer;margin-top:8px}
+  .conferir:disabled{background:#bcbcbc;cursor:not-allowed}
+  .pegadinhas{background:#fff6e0;border:1px solid var(--sun)}
+  .pegadinhas ol{margin:8px 0 0;padding-left:22px}
+  .pegadinhas li{margin:8px 0}
+  table.cover{width:100%;border-collapse:collapse;margin-top:10px;font-size:15px}
+  table.cover th,table.cover td{border:1px solid var(--line);padding:8px;text-align:left}
+  table.cover th{background:var(--soft)}
+  .revisar{background:#fdeeee;border:1px solid var(--red)}
+  .revisar ul{margin:8px 0 0}
+  .footer-nav{display:flex;justify-content:space-between;margin:20px 0;gap:10px;flex-wrap:wrap}
+  .footer-nav a{background:var(--green);color:#fff;text-decoration:none;border-radius:12px;padding:12px 18px;font-weight:700}
+  .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:center;justify-content:center;z-index:99}
+  .modal-bg.show{display:flex}
+  .modal{background:#fff;border-radius:16px;padding:20px;max-width:520px;width:92%}
+  .modal textarea{width:100%;min-height:120px}
+  .modal button{margin-top:10px;border:none;border-radius:10px;padding:9px 14px;font-weight:600;cursor:pointer}
+  small.muted{color:#8a8674}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>📖 Leitura Guiada — GeoAventura 🌍</h1>
+    <p>Geografia · 6º ano A · Colégio Coração Feliz · Prof.ª Gabrielly de Sá Machado Figueiredo</p>
+    <p><b>Capítulos 10, 11 e 12</b> — Tempo geológico, Relevo e Solo · Prova: <b>29/09</b></p>
+    <span class="badge">Leia com calma, um bloco de cada vez ✨</span>
+  </header>
+
+  <nav class="tabs">
+    <a href="index.html">🏠 Início</a>
+    <a class="active" href="leitura-guiada.html">📖 Leitura Guiada</a>
+    <a href="quiz.html">🎯 Quiz</a>
+    <a href="resumo.html">🗺️ Resumo</a>
+    <a href="simulado.html">📝 Simulado</a>
+  </nav>
+
+  <div class="panel howto">
+    <h2>Como usar 👣</h2>
+    <p>Cada bloco tem um textinho e <b>3 perguntas</b>. Você <b>escreve</b> a resposta com as suas próprias palavras (não vale copiar o texto!). Depois clica em <b>Conferir</b> para ver a resposta modelo e marcar se acertou. O próximo bloco só abre quando você confere o anterior. No fim tem uma caixa de <b>pegadinhas</b> e uma tabela mostrando onde cada assunto foi estudado. Tudo o que você escreve fica salvo sozinho neste computador. 💾</p>
+  </div>
+
+  <div class="save-bar">
+    <button class="btn-exp" onclick="exportar()">📥 Exportar</button>
+    <button class="btn-imp" onclick="abrirImport()">📤 Importar</button>
+    <button class="btn-zero" onclick="zerar()">🗑️ Zerar tudo</button>
+    <span id="saveInfo">—</span>
+  </div>
+
+  <div id="blocos"></div>
+
+  <div class="panel pegadinhas">
+    <h2>⚠️ 10 Pegadinhas que a prova adora</h2>
+    <ol>
+      <li><b>Magma x lava:</b> é o <u>mesmo</u> material! Chama-se <b>magma</b> quando está preso dentro da Terra e <b>lava</b> quando sai pelo vulcão.</li>
+      <li><b>Norte magnético ≠ norte geográfico</b> — e, no relevo: a crosta <b>oceânica</b> é mais <u>fina</u> que a continental, mas é mais <u>densa</u> (não é mais grossa!).</li>
+      <li><b>Agentes internos</b> (endógenos) = vulcanismo e tectonismo (vêm de <u>dentro</u>). <b>Agentes externos</b> (exógenos) = intemperismo, erosão, vento, água (vêm de <u>fora</u>).</li>
+      <li><b>Graben x horst:</b> no falhamento, <b>graben</b> é a parte que <u>desce</u> (rebaixa) e <b>horst</b> é a que <u>sobe</u>.</li>
+      <li><b>Maremoto x tsunami:</b> não são a mesma coisa. O <b>maremoto</b> é o tremor no fundo do mar; o <b>tsunami</b> é a onda gigante que ele gera.</li>
+      <li><b>Dobramentos modernos</b> (Himalaia, Andes) são montanhas <u>jovens</u> — da Era Cenozoica. Não são as estruturas mais antigas!</li>
+      <li><b>Escudos cristalinos</b> = estruturas <u>mais antigas</u> (Pré-cambriano). <b>Bacias sedimentares</b> = onde estão petróleo e carvão mineral.</li>
+      <li><b>Intemperismo físico</b> quebra a rocha em pedaços; <b>intemperismo químico</b> muda a composição da rocha (ex.: cavernas de calcário).</li>
+      <li><b>Horizontes do solo:</b> o <b>O</b> e o <b>A</b> (perto da superfície) são os mais férteis; o <b>C</b> é a transição para a rocha original.</li>
+      <li><b>Desertificação x arenização x lixiviação:</b> desertificação = solo perde umidade/fertilidade (semiárido); arenização = excesso de areia (Pampas/RS); lixiviação = a chuva "lava" e leva os minerais para baixo.</li>
+    </ol>
+  </div>
+
+  <div class="panel">
+    <h2>🧭 Cobertura — Onde estudei cada assunto</h2>
+    <table class="cover">
+      <tr><th>Tópico da prova</th><th>Capítulo</th><th>Bloco</th></tr>
+      <tr><td>Tempo geológico e tabela geológica (eras)</td><td>10</td><td>Bloco 1</td></tr>
+      <tr><td>Deriva continental, Pangeia, eras Mesozoica/Cenozoica</td><td>10</td><td>Bloco 2</td></tr>
+      <tr><td>Camadas da Terra (crosta, manto, núcleo, litosfera, astenosfera)</td><td>10</td><td>Bloco 3</td></tr>
+      <tr><td>Placas tectônicas e movimentos (convergente, divergente, transformante)</td><td>10</td><td>Bloco 4</td></tr>
+      <tr><td>Formas do tectonismo (montanhas, vulcões, ilhas, fossas)</td><td>10</td><td>Bloco 5</td></tr>
+      <tr><td>Agentes internos/externos, magma e lava</td><td>11</td><td>Bloco 6</td></tr>
+      <tr><td>Vulcanismo, dobramentos e falhamentos</td><td>11</td><td>Bloco 7</td></tr>
+      <tr><td>Intemperismo físico e químico</td><td>11</td><td>Bloco 8</td></tr>
+      <tr><td>Estruturas e formas de relevo (escudos, bacias, planaltos...)</td><td>11</td><td>Bloco 9</td></tr>
+      <tr><td>Solo: formação, componentes e horizontes</td><td>12</td><td>Bloco 10</td></tr>
+      <tr><td>Problemas do solo e técnicas de conservação</td><td>12</td><td>Bloco 11</td></tr>
+    </table>
+  </div>
+
+  <div class="panel revisar" id="revisarBox" style="display:none">
+    <h2>🔁 Para revisar</h2>
+    <p>Estas perguntas ficaram marcadas em vermelho (resposta muito parecida com o texto) ou com algum "não" na autoavaliação. Vale reler o bloco e reescrever com as suas palavras!</p>
+    <ul id="revisarList"></ul>
+  </div>
+
+  <div class="footer-nav">
+    <a href="index.html">🏠 Início</a>
+    <a href="quiz.html">🎯 Ir para o Quiz →</a>
+  </div>
+  <p><small class="muted">Feito com carinho para o(a) jovem aprendiz. Fonte: livro Callis Geografia 6 – Livro 1 (P+), capítulos 10, 11 e 12.</small></p>
+</div>
+
+<div class="modal-bg" id="importModal">
+  <div class="modal">
+    <h3>📤 Importar respostas</h3>
+    <p>Cole aqui o texto que você exportou antes:</p>
+    <textarea id="importText"></textarea>
+    <div>
+      <button class="btn-imp" onclick="fazerImport()">Importar</button>
+      <button class="btn-zero" onclick="fecharImport()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ====== DADOS DA LEITURA (conteúdo original, baseado no livro) ======
+const BLOCOS = [
+ {
+  id:"b1", cor:"h-green", emoji:"⏳", titulo:"Bloco 1 — O tempo geológico",
+  paragrafos:[
+   "Quando pensamos em tempo, logo imaginamos o relógio marcando segundos, minutos e horas. Mas o planeta Terra tem um tempo muito diferente do nosso. A Terra tem cerca de <span class='keyword'>4,6 bilhões de anos</span> — um número gigante perto dos poucos anos de uma vida humana. Esse tempo enorme, medido em milhões e bilhões de anos, é chamado de <span class='keyword'>tempo geológico</span>.",
+   "Para organizar essa história tão longa, os cientistas criaram a <span class='keyword'>tabela geológica</span>. Ela divide o tempo da Terra em partes: éons, eras e períodos. Cada divisão marca grandes mudanças, como o surgimento dos oceanos, dos primeiros seres vivos e, bem no finalzinho, do ser humano.",
+   "A era mais recente é a <span class='keyword'>Cenozoica</span> (os últimos 66 milhões de anos). Foi nela que se formaram montanhas como os Andes, os Alpes e o Himalaia, e também o Pantanal e o rio Amazonas, aqui no Brasil. A parte mais nova dessa era é o Holoceno, dos últimos 11 mil anos — quando surgiu o ser humano atual. Já o <span class='keyword'>Pré-cambriano</span> é a divisão mais antiga e sozinha corresponde a mais da metade de todo o tempo geológico."
+  ],
+  perguntas:[
+   {tipo:"conceitual", q:"Com as suas palavras, o que é o tempo geológico e por que ele é tão diferente do tempo que marcamos no relógio?",
+    modelo:"É o tempo de vida da Terra, contado em milhões e bilhões de anos. É diferente do tempo do relógio porque as mudanças no planeta são lentíssimas e levam períodos enormes, muito maiores que uma vida humana.",
+    chk:["Falei que é medido em milhões/bilhões de anos?","Falei que é o tempo da Terra (bem maior que o humano)?"]},
+   {tipo:"aplicacao", q:"Imagine que você precisa explicar para um primo mais novo o que é a tabela geológica. Escreva como você explicaria, usando um exemplo do dia a dia (como uma linha do tempo ou um álbum de figurinhas).",
+    modelo:"Eu diria que a tabela geológica é como uma linha do tempo (ou um álbum) que organiza a história da Terra em partes (éons, eras e períodos), mostrando quando cada coisa importante aconteceu, como o surgimento dos oceanos e dos seres vivos.",
+    chk:["Comparei com uma linha do tempo/álbum ou algo parecido?","Falei que ela organiza a história da Terra em partes?"]},
+   {tipo:"aplicacao", q:"A prova pode perguntar qual era é a mais recente. Escreva uma frase sua dizendo o nome dela e cite UM exemplo de coisa que se formou nessa era.",
+    modelo:"A era mais recente é a Cenozoica. Nela se formaram, por exemplo, a cordilheira dos Andes (ou os Alpes, o Himalaia, o Pantanal ou o rio Amazonas).",
+    chk:["Escrevi o nome 'Cenozoica'?","Citei um exemplo do que se formou nela?"]}
+  ]
+ },
+ {
+  id:"b2", cor:"h-blue", emoji:"🧩", titulo:"Bloco 2 — Deriva continental e Pangeia",
+  paragrafos:[
+   "Há muito tempo, os continentes ficavam grudados em um só bloco gigante chamado <span class='keyword'>Pangeia</span>. Isso aconteceu na Era <span class='keyword'>Mesozoica</span> (entre cerca de 252 e 66 milhões de anos atrás). Com o passar de milhões de anos, esse supercontinente foi se partindo, primeiro em dois grandes pedaços: a <span class='keyword'>Gondwana</span> (que virou América do Sul e África) e a <span class='keyword'>Laurásia</span> (América do Norte, Europa e Ásia).",
+   "Quando a Gondwana se separou, começou a se formar o <span class='keyword'>oceano Atlântico</span>. Ou seja: o mapa que vemos hoje é bem diferente do que existia há milhões de anos, porque os continentes se movem muito devagar.",
+   "Quem primeiro percebeu isso foi o cientista alemão <span class='keyword'>Alfred Wegener</span>, no século XX. Ele notou que o contorno dos continentes se encaixava como um quebra-cabeça e que havia fósseis dos mesmos animais em continentes distantes. Ele chamou essa ideia de <span class='keyword'>teoria da deriva continental</span>. Só mais tarde a ciência explicou COMO isso acontece, com a teoria das placas tectônicas."
+  ],
+  perguntas:[
+   {tipo:"conceitual", q:"O que foi a Pangeia? Responda com as suas palavras.",
+    modelo:"A Pangeia foi um supercontinente, ou seja, todos os continentes juntos em um único bloco, que existiu na Era Mesozoica antes de se separar.",
+    chk:["Falei que era um único bloco/supercontinente?","Falei que os continentes depois se separaram?"]},
+   {tipo:"aplicacao", q:"Wegener usou 'pistas' para desconfiar que os continentes já estiveram juntos. Pense como um detetive e escreva DUAS pistas que ele poderia ter usado.",
+    modelo:"O contorno dos continentes que se encaixa como um quebra-cabeça e a presença de fósseis dos mesmos animais e plantas em continentes hoje separados.",
+    chk:["Citei o encaixe do contorno dos continentes?","Citei os fósseis iguais em continentes diferentes?"]},
+   {tipo:"aplicacao", q:"Escreva uma frase sua ligando a separação da Gondwana à formação de um oceano que existe hoje.",
+    modelo:"Quando a Gondwana se separou (a América do Sul afastou-se da África), foi surgindo o oceano Atlântico entre eles.",
+    chk:["Citei o oceano Atlântico?","Liguei ele à separação dos continentes?"]}
+  ]
+ },
+ {
+  id:"b3", cor:"h-terra", emoji:"🧅", titulo:"Bloco 3 — As camadas da Terra",
+  paragrafos:[
+   "A Terra não é maciça por dentro: ela tem camadas, como uma cebola. A camada de fora é a <span class='keyword'>crosta</span>, que é rochosa e sustenta os continentes e os oceanos. A crosta <b>oceânica</b> é mais <u>fina</u> que a continental, porém é mais <u>densa</u>. É na crosta que sentimos os terremotos.",
+   "Abaixo da crosta vem o <span class='keyword'>manto</span>, formado por <span class='keyword'>magma</span> (rocha derretida, quente e pastosa) que se movimenta em ciclos. Bem no centro está o <span class='keyword'>núcleo</span>: o núcleo externo é líquido (metais como ferro e níquel) e o interno é sólido, por causa da altíssima pressão.",
+   "Alguns nomes caem muito na prova: a <span class='keyword'>litosfera</span> é a parte dura formada pela crosta + o topo do manto; logo abaixo dela fica a <span class='keyword'>astenosfera</span> (parte do manto onde as placas deslizam). E a <span class='keyword'>descontinuidade de Mohorovicic</span> é a 'fronteira' que marca o fim da crosta e o início do manto. As camadas foram descobertas de forma <b>indireta</b>, estudando as ondas de terremotos."
+  ],
+  perguntas:[
+   {tipo:"conceitual", q:"Quais são as três grandes camadas da Terra, da mais externa para a mais interna?",
+    modelo:"Da mais externa para a mais interna: crosta, manto e núcleo.",
+    chk:["Coloquei crosta, manto e núcleo?","Coloquei na ordem de fora para dentro?"]},
+   {tipo:"aplicacao", q:"Explique, como se fosse para um colega, como os cientistas conseguiram descobrir as camadas do interior da Terra sem conseguir cavar até lá.",
+    modelo:"Eles descobriram de forma indireta: estudando como as ondas dos terremotos atravessam o planeta. As ondas mudam de comportamento ao passar por materiais diferentes, então dá para saber quantas camadas existem e do que são feitas.",
+    chk:["Falei que foi de forma indireta (sem cavar)?","Citei as ondas dos terremotos/ondas sísmicas?"]},
+   {tipo:"aplicacao", q:"A prova adora confundir crosta oceânica e continental. Escreva uma frase sua comparando as duas quanto à espessura e à densidade.",
+    modelo:"A crosta oceânica é mais fina que a continental, mas é mais densa que ela.",
+    chk:["Falei que a oceânica é mais fina?","Falei que a oceânica é mais densa?"]}
+  ]
+ },
+ {
+  id:"b4", cor:"h-green", emoji:"🌐", titulo:"Bloco 4 — Placas tectônicas e seus movimentos",
+  paragrafos:[
+   "A litosfera não é inteira: ela é dividida em grandes pedaços chamados <span class='keyword'>placas tectônicas</span> (são cerca de 50 no mundo). Elas ficam 'boiando' e deslizando bem devagar sobre a astenosfera. Por isso os continentes se movem — a América e a África, por exemplo, se afastam cerca de <span class='keyword'>3 cm por ano</span>.",
+   "O que move as placas são as <span class='keyword'>correntes de convecção</span>: o magma quente sobe, o mais frio desce, e esse vai e vem funciona como um 'motor' que empurra as placas.",
+   "Existem três tipos de movimento. No <span class='keyword'>transformante</span>, as placas raspam uma na outra de lado (gera terremotos, como na costa oeste dos EUA). No <span class='keyword'>divergente</span>, elas se afastam (como na Dorsal Mesoatlântica, no meio do Atlântico, e na Islândia). No <span class='keyword'>convergente</span>, elas se chocam e podem formar cordilheiras, causar terremotos e, no fundo do mar, maremotos que geram <span class='keyword'>tsunamis</span> (como o do Japão em 2011)."
+  ],
+  perguntas:[
+   {tipo:"conceitual", q:"O que faz as placas tectônicas se moverem? Responda com as suas palavras.",
+    modelo:"São as correntes de convecção do magma no manto: o magma quente sobe e o frio desce, e esse movimento empurra as placas.",
+    chk:["Citei as correntes de convecção (ou o movimento do magma)?","Liguei isso ao movimento das placas?"]},
+   {tipo:"aplicacao", q:"Faça uma tabela ou lista sua com os TRÊS tipos de movimento das placas e, em cada um, escreva com suas palavras o que acontece.",
+    modelo:"Transformante: as placas raspam de lado (gera terremotos). Divergente: as placas se afastam (ex.: Dorsal Mesoatlântica). Convergente: as placas se chocam (forma cordilheiras e pode gerar maremotos/tsunamis).",
+    chk:["Citei os três: transformante, divergente e convergente?","Expliquei o que acontece em cada um?"]},
+   {tipo:"aplicacao", q:"Um maremoto no fundo do oceano pode virar notícia no mundo todo. Escreva uma frase explicando o que é um tsunami e ligando ele a um movimento de placas.",
+    modelo:"Tsunami é uma onda gigante causada por um maremoto (tremor no fundo do mar), que costuma acontecer no movimento convergente, quando as placas se chocam sob o oceano.",
+    chk:["Falei que o tsunami é uma onda gigante gerada pelo maremoto?","Liguei ao movimento convergente das placas?"]}
+  ]
+ },
+ {
+  id:"b5", cor:"h-blue", emoji:"🏔️", titulo:"Bloco 5 — Formas criadas pelos movimentos",
+  paragrafos:[
+   "Os movimentos das placas criam várias formas na superfície. As <span class='keyword'>montanhas</span> nascem do movimento convergente (duas placas se chocam e uma se dobra para cima). Elas são altas e pontiagudas — algumas passam de 8 km de altitude — e ainda estão crescendo.",
+   "Quando o magma chega à superfície e vira lava, ela se solidifica e vai formando o <span class='keyword'>edifício vulcânico</span> (o cone do vulcão). Se o derramamento de lava acontece no fundo do mar e ultrapassa o nível da água, pode nascer uma <span class='keyword'>ilha vulcânica</span> — como o Havaí ou, no Brasil, Fernando de Noronha.",
+   "Já as <span class='keyword'>fossas oceânicas</span> são os pontos mais fundos dos oceanos. A mais famosa é a <span class='keyword'>fossa das Marianas</span>, com quase 11 km de profundidade. Elas se formam nas <span class='keyword'>zonas de subducção</span>, onde uma placa escorrega por baixo da outra."
+  ],
+  perguntas:[
+   {tipo:"conceitual", q:"O que são fossas oceânicas e onde fica a mais famosa delas?",
+    modelo:"São os lugares mais profundos dos oceanos, formados nas zonas de subducção. A mais famosa é a fossa das Marianas, com quase 11 km de profundidade.",
+    chk:["Falei que são os pontos mais fundos do oceano?","Citei a fossa das Marianas?"]},
+   {tipo:"aplicacao", q:"Explique, com as suas palavras, como uma ilha vulcânica pode nascer no meio do oceano. Dê um exemplo.",
+    modelo:"Quando um vulcão no fundo do mar derrama lava, ela vai se solidificando e empilhando; se passar do nível da água, forma uma ilha. Exemplos: Havaí ou Fernando de Noronha.",
+    chk:["Expliquei o acúmulo de lava até passar do nível do mar?","Dei um exemplo (Havaí ou Fernando de Noronha)?"]},
+   {tipo:"aplicacao", q:"Escreva uma frase sua ligando a formação das grandes montanhas ao movimento convergente das placas.",
+    modelo:"As montanhas se formam no movimento convergente, quando duas placas se chocam e uma delas se dobra para cima, criando relevos bem altos.",
+    chk:["Citei o movimento convergente/choque de placas?","Liguei ao surgimento das montanhas?"]}
+  ]
+ },
+ {
+  id:"b6", cor:"h-orange", emoji:"🔥", titulo:"Bloco 6 — Agentes do relevo: internos, externos, magma e lava",
+  paragrafos:[
+   "O relevo (as formas da superfície) está sempre sendo transformado por dois tipos de 'trabalhadores': os <span class='keyword'>agentes internos</span> (ou endógenos) e os <span class='keyword'>agentes externos</span> (ou exógenos).",
+   "Os <span class='keyword'>agentes internos</span> vêm de <u>dentro</u> da Terra: são o <b>vulcanismo</b> e o <b>tectonismo</b> (o movimento das placas). Eles constroem relevos, como montanhas e vulcões. Os <span class='keyword'>agentes externos</span> agem por <u>fora</u>, na superfície: são o vento, a água, o calor, o frio, a vegetação e o próprio ser humano. Eles funcionam como 'escultores', desgastando o relevo devagar.",
+   "Uma dúvida clássica: <span class='keyword'>magma e lava são o mesmo material</span> (rocha derretida a mais de 1000 °C). A diferença é o lugar: chamamos de <b>magma</b> enquanto está preso dentro da crosta, sob muita pressão, e de <b>lava</b> quando ele chega à superfície pelo vulcão."
+  ],
+  perguntas:[
+   {tipo:"conceitual", q:"Qual é a diferença entre agentes internos e agentes externos do relevo?",
+    modelo:"Os agentes internos (endógenos) vêm de dentro da Terra (vulcanismo e tectonismo) e constroem o relevo. Os externos (exógenos) agem na superfície (vento, água, temperatura, seres vivos) e desgastam o relevo.",
+    chk:["Falei que os internos vêm de dentro (vulcanismo/tectonismo)?","Falei que os externos agem na superfície (vento, água...)?"]},
+   {tipo:"aplicacao", q:"Explique, com suas palavras, a diferença entre magma e lava usando a ideia de 'lugar'.",
+    modelo:"É o mesmo material derretido: chama-se magma quando está preso dentro da Terra e lava quando já saiu para a superfície pelo vulcão.",
+    chk:["Falei que é o mesmo material?","Falei que magma é dentro e lava é na superfície?"]},
+   {tipo:"aplicacao", q:"Dê UM exemplo de agente externo e escreva uma frase mostrando como ele 'esculpe' o relevo.",
+    modelo:"O vento é um agente externo: ao soprar por muito tempo, ele atrita e desgasta as rochas (erosão eólica), mudando aos poucos a forma do relevo. (Pode citar também a água, o gelo ou as raízes.)",
+    chk:["Citei um agente externo (vento, água, gelo, raízes...)?","Expliquei que ele desgasta/esculpe o relevo?"]}
+  ]
+ },
+ {
+  id:"b7", cor:"h-terra", emoji:"⛰️", titulo:"Bloco 7 — Vulcanismo, dobramentos e falhamentos",
+  paragrafos:[
+   "O <span class='keyword'>vulcanismo</span> é o agente interno mais <u>rápido</u>: um vulcão pode mudar a paisagem em horas ou dias, expelindo lava, gases e cinzas. E tem um detalhe curioso: rochas vulcânicas (como o <b>basalto</b>) formam solos muito <span class='keyword'>férteis</span> — por isso muita gente vive perto de vulcões, mesmo com o risco. No Brasil, hoje todos os vulcões estão inativos ou extintos.",
+   "O <span class='keyword'>tectonismo</span> (movimento das placas) cria duas formas importantes. Nos <span class='keyword'>dobramentos</span>, duas placas se chocam, uma mergulha (subducção) e a outra se dobra para cima, formando montanhas altas e pontiagudas — as grandes cordilheiras modernas, como Himalaia, Alpes e Andes.",
+   "Nos <span class='keyword'>falhamentos</span>, uma parte da placa se quebra e se movimenta na vertical. A parte que <u>desce</u> chama-se <span class='keyword'>graben</span> e a que <u>sobe</u> chama-se <span class='keyword'>horst</span>. Um exemplo brasileiro é a Serra da Mantiqueira, que originou o Vale do Paraíba do Sul."
+  ],
+  perguntas:[
+   {tipo:"conceitual", q:"Por que muitas pessoas moram perto de vulcões mesmo sabendo do perigo?",
+    modelo:"Porque as rochas vulcânicas formam solos muito férteis, ótimos para a agricultura, o que atrai as pessoas mesmo com o risco de erupção.",
+    chk:["Falei que os solos perto de vulcões são férteis?","Liguei isso à agricultura/atração das pessoas?"]},
+   {tipo:"aplicacao", q:"Explique para um colega a diferença entre graben e horst num falhamento (pode desenhar com palavras).",
+    modelo:"No falhamento a placa se quebra e uma parte sobe e outra desce. O graben é o bloco que desce (rebaixa) e o horst é o bloco que sobe (se eleva).",
+    chk:["Falei que graben é a parte que desce?","Falei que horst é a parte que sobe?"]},
+   {tipo:"aplicacao", q:"Escreva uma frase sua explicando como se forma um dobramento e cite uma cordilheira que nasceu assim.",
+    modelo:"O dobramento acontece quando duas placas se chocam, uma mergulha (subducção) e a outra se dobra para cima formando montanhas. Exemplo: o Himalaia (ou os Andes, ou os Alpes).",
+    chk:["Expliquei o choque das placas / uma dobrando para cima?","Citei uma cordilheira (Himalaia, Andes ou Alpes)?"]}
+  ]
+ },
+ {
+  id:"b8", cor:"h-blue", emoji:"🪨", titulo:"Bloco 8 — Intemperismo físico e químico",
+  paragrafos:[
+   "<span class='keyword'>Intemperismo</span> é o nome do desgaste das rochas pela ação dos agentes externos. Ele tem dois tipos principais.",
+   "No <span class='keyword'>intemperismo físico</span>, a rocha se <u>quebra em pedaços</u> sem mudar do que é feita. Isso acontece, por exemplo, pela água que congela dentro das fendas, pelas raízes das plantas que crescem nas rachaduras, pelo vento que atrita (erosão eólica) e pela variação de temperatura entre o dia e a noite, que faz a rocha dilatar e contrair.",
+   "No <span class='keyword'>intemperismo químico</span>, a rocha <u>muda de composição</u> ao reagir com o ar e a água. Um exemplo lindo são as <span class='keyword'>cavernas</span> em rochas calcárias: a água da chuva, rica em ácido carbônico, vai dissolvendo a rocha por dentro ao longo de muito tempo."
+  ],
+  perguntas:[
+   {tipo:"conceitual", q:"O que é intemperismo? Quais são os dois tipos principais?",
+    modelo:"Intemperismo é o desgaste das rochas causado pelos agentes externos. Os dois tipos principais são o físico e o químico.",
+    chk:["Falei que é o desgaste das rochas?","Citei os tipos físico e químico?"]},
+   {tipo:"aplicacao", q:"Dê um exemplo NOVO (que não esteja no texto) de intemperismo físico do seu dia a dia ou da sua cidade.",
+    modelo:"Resposta pessoal. Ex.: uma calçada de pedra que racha porque o sol esquenta e a chuva esfria muitas vezes; ou uma parede de pedra que se solta onde uma raiz cresceu. O importante é ser um caso de rocha se QUEBRANDO em pedaços.",
+    chk:["Meu exemplo mostra a rocha se quebrando/fragmentando?","É um exemplo meu, diferente do texto?"]},
+   {tipo:"aplicacao", q:"Explique, com suas palavras, como uma caverna de calcário se forma e por que isso é intemperismo químico.",
+    modelo:"A água da chuva, com ácido carbônico, vai dissolvendo a rocha calcária por dentro ao longo do tempo. É intemperismo químico porque a rocha muda de composição (não só se quebra).",
+    chk:["Falei que a água ácida dissolve a rocha calcária?","Expliquei que a rocha muda de composição (por isso é químico)?"]}
+  ]
+ },
+ {
+  id:"b9", cor:"h-green", emoji:"🗺️", titulo:"Bloco 9 — Estruturas e formas do relevo",
+  paragrafos:[
+   "As <span class='keyword'>estruturas de relevo</span> são a 'base' das paisagens. Os <span class='keyword'>escudos cristalinos</span> (também chamados de crátons ou maciços antigos) são as estruturas <u>mais antigas</u>, do Pré-cambriano, feitas de rochas duras e resistentes. Neles encontramos muitos minerais metálicos, como o ferro.",
+   "As <span class='keyword'>bacias sedimentares</span> são áreas rebaixadas onde se acumulam sedimentos, formando rochas sedimentares. É nelas que estão o <span class='keyword'>petróleo</span> e o <span class='keyword'>carvão mineral</span>. Há também os <b>terrenos vulcânicos</b> (basalto, solos férteis) e os <span class='keyword'>dobramentos modernos</span> — montanhas jovens da Era Cenozoica, como o Himalaia, onde fica o Everest (8.848 m).",
+   "Sobre essas estruturas aparecem as <span class='keyword'>formas de relevo</span>: os <b>planaltos</b> (áreas altas e relativamente planas, com chapadas e serras), as <b>planícies</b> (áreas planas onde se acumulam sedimentos) e as <b>depressões</b> (áreas mais baixas que o entorno; a <u>absoluta</u> fica abaixo do nível do mar e a <u>relativa</u>, acima)."
+  ],
+  perguntas:[
+   {tipo:"conceitual", q:"Qual é a diferença entre escudos cristalinos e bacias sedimentares (inclusive quanto ao que encontramos em cada um)?",
+    modelo:"Os escudos cristalinos são as estruturas mais antigas, de rochas duras, ricas em minerais metálicos (como o ferro). As bacias sedimentares são áreas rebaixadas com rochas sedimentares, onde estão o petróleo e o carvão mineral.",
+    chk:["Falei que escudos são antigos e têm minerais metálicos (ferro)?","Falei que bacias têm petróleo e carvão mineral?"]},
+   {tipo:"aplicacao", q:"A prova costuma confundir planalto, planície e depressão. Escreva com suas palavras uma frase para cada um, dizendo se é alto, plano ou baixo.",
+    modelo:"Planalto: área alta e relativamente plana. Planície: área plana onde se acumulam sedimentos. Depressão: área mais baixa que as regiões ao redor.",
+    chk:["Descrevi planalto como área alta e plana?","Descrevi planície e depressão corretamente (plana / mais baixa)?"]},
+   {tipo:"aplicacao", q:"Escreva uma frase sua diferenciando depressão absoluta de depressão relativa.",
+    modelo:"A depressão absoluta fica abaixo do nível do mar; a depressão relativa fica acima do nível do mar, mas mais baixa que as áreas ao redor.",
+    chk:["Falei que a absoluta é abaixo do nível do mar?","Falei que a relativa é acima do nível do mar?"]}
+  ]
+ },
+ {
+  id:"b10", cor:"h-orange", emoji:"🌱", titulo:"Bloco 10 — O solo: formação e horizontes",
+  paragrafos:[
+   "O <span class='keyword'>solo</span> é aquela camada porosa que fica na superfície e onde as plantas crescem. Ele se forma quando as rochas se desgastam pelo intemperismo, virando minerais soltos. Mas o solo não é só isso: ele também tem <span class='keyword'>água, ar, matéria orgânica e seres vivos</span> (minhocas, fungos, bactérias).",
+   "Toda essa 'vida' é importante: os microrganismos decompõem a matéria orgânica e as minhocas arejam a terra. A parte do solo mais rica em matéria orgânica chama-se <span class='keyword'>húmus</span> e é a mais fértil. O solo se origina de uma <b>rocha original</b> (ou rocha matriz), e sua textura pode ter mais argila, silte ou areia.",
+   "O solo se organiza em camadas chamadas <span class='keyword'>horizontes</span>. De cima para baixo: <b>O</b> (matéria orgânica na superfície), <b>A</b> (rico em húmus e onde ficam as raízes — bem fértil), <b>E</b> (camada mais clara, de onde a água leva minerais para baixo), <b>B</b> (acumula os minerais que desceram, por percolação) e <b>C</b> (a transição para a rocha original)."
+  ],
+  perguntas:[
+   {tipo:"conceitual", q:"Além dos minerais das rochas, que outros elementos fazem parte do solo?",
+    modelo:"Água, ar, matéria orgânica e seres vivos (como minhocas, fungos e bactérias).",
+    chk:["Citei água e ar?","Citei matéria orgânica e seres vivos?"]},
+   {tipo:"aplicacao", q:"Explique, como se fosse para um colega, por que as minhocas e os microrganismos deixam o solo mais fértil.",
+    modelo:"Os microrganismos (fungos e bactérias) decompõem a matéria orgânica e ajudam a formar o húmus; as minhocas arejam e revolvem o solo. Tudo isso deixa a terra mais rica em nutrientes, ou seja, mais fértil.",
+    chk:["Falei que os microrganismos decompõem a matéria orgânica (húmus)?","Falei que as minhocas arejam/enriquecem o solo?"]},
+   {tipo:"aplicacao", q:"Sem copiar o texto, liste os horizontes do solo na ordem (de cima para baixo) e diga qual é o mais fértil.",
+    modelo:"Ordem de cima para baixo: O, A, E, B, C. Os mais férteis são o O e o A (que ficam perto da superfície e têm mais matéria orgânica).",
+    chk:["Coloquei os horizontes na ordem O, A, E, B, C?","Indiquei o O/A como o(s) mais fértil(eis)?"]}
+  ]
+ },
+ {
+  id:"b11", cor:"h-terra", emoji:"🚜", titulo:"Bloco 11 — Problemas e conservação do solo",
+  paragrafos:[
+   "Usar o solo sem cuidado gera problemas sérios. A <span class='keyword'>erosão</span> é a retirada e o transporte da camada de cima do solo pela água e pela gravidade. Ela piora muito com o <b>desmatamento</b> e com a agricultura mal feita, e ainda causa o <span class='keyword'>assoreamento</span> (o solo arrastado entope os rios). Quando o solo fica muito exposto, pode surgir a <span class='keyword'>voçoroca</span> (o famoso 'buracão').",
+   "Outros problemas: a <span class='keyword'>desertificação</span> (o solo perde a umidade e a fertilidade, como no semiárido do Nordeste), a <span class='keyword'>arenização</span> (excesso de areia, como nos Pampas do Rio Grande do Sul) e a <span class='keyword'>lixiviação</span> (a chuva 'lava' o solo e leva os minerais para as camadas de baixo).",
+   "A boa notícia é que dá para produzir e proteger o solo ao mesmo tempo. Algumas técnicas: <b>plantio em curvas de nível</b> (as plantas viram barreiras contra a água em morros), <b>rotação de culturas</b> (trocar o que se planta para o solo repor nutrientes), <b>plantio direto na palha</b> (cobrir o solo com a palha da colheita) e a <span class='keyword'>agrofloresta</span> (misturar plantas rasteiras, arbustos e árvores no mesmo lugar)."
+  ],
+  perguntas:[
+   {tipo:"conceitual", q:"O que é erosão do solo e o que a torna mais forte?",
+    modelo:"Erosão é a retirada e o transporte da camada de cima do solo pela água e pela gravidade. Ela fica mais forte com o desmatamento e o uso intensivo/mal feito do solo.",
+    chk:["Falei que é a retirada/transporte da camada superficial pela água?","Citei o desmatamento/uso intensivo como agravante?"]},
+   {tipo:"aplicacao", q:"Um agricultor quer plantar num morro sem perder o solo. Sugira DUAS técnicas de conservação e explique com suas palavras como cada uma ajuda.",
+    modelo:"Ex.: plantio em curvas de nível (as fileiras de plantas seguram a água da chuva e evitam a erosão no morro) e rotação de culturas (trocar a plantação a cada safra deixa o solo repor os nutrientes). Também valem plantio direto na palha e agrofloresta.",
+    chk:["Sugeri duas técnicas de conservação?","Expliquei como cada uma protege o solo?"]},
+   {tipo:"aplicacao", q:"A prova mistura desertificação, arenização e lixiviação. Escreva uma frase curta diferenciando as três.",
+    modelo:"Desertificação: o solo perde umidade e fertilidade (semiárido do NE). Arenização: excesso de areia no solo (Pampas/RS). Lixiviação: a chuva 'lava' o solo e leva os minerais para as camadas de baixo.",
+    chk:["Diferenciei desertificação de arenização?","Expliquei a lixiviação (lavagem/minerais para baixo)?"]}
+  ]
+ }
+];
+
+// ====== ESTADO / SALVAMENTO ======
+const KEY="geo6_caps10-12_leitura_v1";
+let store={};
+const mem={}; // fallback
+function load(){
+  try{ const raw=localStorage.getItem(KEY); if(raw) store=JSON.parse(raw); }
+  catch(e){ store=mem[KEY]?JSON.parse(mem[KEY]):{}; }
+  if(!store.blocos) store.blocos={};
+}
+function save(){
+  store.quando=new Date().toLocaleString('pt-BR');
+  const raw=JSON.stringify(store);
+  try{ localStorage.setItem(KEY,raw); }catch(e){ mem[KEY]=raw; }
+  const el=document.getElementById('saveInfo'); if(el) el.textContent="Salvo "+store.quando;
+}
+
+// ====== ANTICÓPIA ======
+function normWords(s){
+  return (s||"").toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
+    .replace(/[^a-z0-9\s]/g,' ').split(/\s+/).filter(Boolean);
+}
+function hasRun(hay,seq){
+  if(seq.length===0) return false;
+  for(let i=0;i+seq.length<=hay.length;i++){
+    let ok=true;
+    for(let j=0;j<seq.length;j++){ if(hay[i+j]!==seq[j]){ok=false;break;} }
+    if(ok) return true;
+  }
+  return false;
+}
+function detectTranscricao(answer, blockText, questionText){
+  const a=normWords(answer), b=normWords(blockText), q=normWords(questionText);
+  const n=a.length;
+  if(n<5) return {transcrita:false, maxRun:0, cov:0};
+  let maxRun=0; const covered=new Array(n).fill(false);
+  for(let i=0;i<n;i++){
+    let len=0;
+    for(let l=1;i+l<=n;l++){ if(hasRun(b,a.slice(i,i+l))) len=l; else break; }
+    if(len>=1){
+      const seg=a.slice(i,i+len);
+      const inQ = len>=4 && hasRun(q,seg);
+      if(!inQ){
+        if(len>maxRun) maxRun=len;
+        if(len>=5){ for(let k=i;k<i+len;k++) covered[k]=true; }
+      }
+    }
+  }
+  const cov = covered.filter(Boolean).length / n;
+  return {transcrita:(maxRun>=8 || cov>0.6), maxRun, cov};
+}
+
+// ====== RENDER ======
+function blockPlainText(bl){
+  return bl.paragrafos.map(p=>p.replace(/<[^>]+>/g,' ')).join(' ');
+}
+function st(bid){ if(!store.blocos[bid]) store.blocos[bid]={perg:{},conferido:false}; return store.blocos[bid]; }
+
+function render(){
+  const cont=document.getElementById('blocos'); cont.innerHTML="";
+  BLOCOS.forEach((bl,idx)=>{
+    const s=st(bl.id);
+    const prev = idx===0 ? true : st(BLOCOS[idx-1].id).conferido;
+    const locked = !prev && !s.conferido;
+    const div=document.createElement('div');
+    div.className="block"+(locked?" locked":"");
+    let statusTxt = s.conferido ? blockStatusLabel(bl) : "";
+    let html=`<div class="block-head ${bl.cor}"><span>${bl.emoji} ${bl.titulo}</span><span class="block-status">${statusTxt}</span></div>`;
+    html+=`<div class="block-body">`;
+    if(locked){
+      html+=`<p><i>🔒 Confira o bloco anterior para abrir este.</i></p>`;
+    }else{
+      html+=`<div class="txt">${bl.paragrafos.map(p=>`<p>${p}</p>`).join("")}</div>`;
+      bl.perguntas.forEach((pg,qi)=>{
+        const ps=s.perg[qi]||{};
+        const red = ps.transcrita ? " red":"";
+        const tag = pg.tipo==="conceitual" ? `<span class="tag tag-con">conceito</span>` : `<span class="tag tag-apl">aplicação</span>`;
+        html+=`<div class="q${red}" id="${bl.id}_q${qi}">`;
+        html+=`${tag}<label>${qi+1}) ${pg.q}</label>`;
+        html+=`<textarea id="${bl.id}_t${qi}" oninput="onType('${bl.id}',${qi})" ${s.conferido?'':''}>${escapeHtml(ps.resp||"")}</textarea>`;
+        html+=`<div class="alert copy" id="${bl.id}_copy${qi}" style="display:none"></div>`;
+        html+=`<div class="alert redwarn" id="${bl.id}_red${qi}" style="display:${ps.transcrita?'block':'none'}">🔴 Esta resposta ficou muito parecida com o texto. Tente reescrever com as suas palavras — isso limpa a marca automaticamente.</div>`;
+        html+=`<div class="modelo${s.conferido?' show':''}" id="${bl.id}_m${qi}">`;
+        html+=`<div class="mtitle">✅ Resposta modelo</div><div>${pg.modelo}</div>`;
+        html+=`<div class="chk">`;
+        pg.chk.forEach((c,ci)=>{
+          const v=(ps.chk&&ps.chk[ci])||"";
+          html+=`<div class="cline"><span>${c}</span>`+
+            `<button class="${v==='sim'?'sel-sim':''}" onclick="setChk('${bl.id}',${qi},${ci},'sim')">Sim</button>`+
+            `<button class="${v==='nao'?'sel-nao':''}" onclick="setChk('${bl.id}',${qi},${ci},'nao')">Não</button></div>`;
+        });
+        html+=`</div></div>`;
+        html+=`</div>`;
+      });
+      html+=`<button class="conferir" id="${bl.id}_btn" onclick="conferir('${bl.id}')">${s.conferido?'✔ Conferido — conferir de novo':'Conferir bloco'}</button>`;
+    }
+    html+=`</div>`;
+    div.innerHTML=html;
+    cont.appendChild(div);
+  });
+  atualizarRevisar();
+}
+function escapeHtml(s){return (s||"").replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function blockStatusLabel(bl){
+  const s=st(bl.id); let anyNao=false, anyRed=false;
+  bl.perguntas.forEach((pg,qi)=>{
+    const ps=s.perg[qi]||{};
+    if(ps.transcrita) anyRed=true;
+    (pg.chk||[]).forEach((c,ci)=>{ if(!ps.chk||ps.chk[ci]!=='sim') { if(ps.chk&&ps.chk[ci]==='nao') anyNao=true; } });
+  });
+  return (anyNao||anyRed) ? "🔁 revisar" : "✅ ok";
+}
+
+function onType(bid,qi){
+  const s=st(bid); if(!s.perg[qi]) s.perg[qi]={};
+  const val=document.getElementById(bid+'_t'+qi).value;
+  s.perg[qi].resp=val;
+  // reescrever limpa a marca vermelha se não for mais transcrição
+  if(s.perg[qi].transcrita){
+    const bl=BLOCOS.find(b=>b.id===bid); const pg=bl.perguntas[qi];
+    const d=detectTranscricao(val, blockPlainText(bl), pg.q);
+    if(!d.transcrita){
+      s.perg[qi].transcrita=false;
+      const q=document.getElementById(bid+'_q'+qi); if(q) q.classList.remove('red');
+      const rw=document.getElementById(bid+'_red'+qi); if(rw) rw.style.display='none';
+    }
+  }
+  save(); atualizarRevisar();
+  const bl=BLOCOS.find(b=>b.id===bid);
+  const st2=st(bid); const idx=BLOCOS.indexOf(bl);
+  if(st2.conferido){ /* atualizar status header */ }
+}
+
+function setChk(bid,qi,ci,val){
+  const s=st(bid); if(!s.perg[qi]) s.perg[qi]={}; if(!s.perg[qi].chk) s.perg[qi].chk={};
+  s.perg[qi].chk[ci]=val; save(); render();
+}
+
+function conferir(bid){
+  const bl=BLOCOS.find(b=>b.id===bid); const s=st(bid);
+  const blockText=blockPlainText(bl);
+  // 1) todas preenchidas com >=3 chars
+  for(let qi=0;qi<bl.perguntas.length;qi++){
+    const v=(document.getElementById(bid+'_t'+qi).value||"").trim();
+    if(v.length<3){
+      showMini(bid, "Preencha as 3 respostas (pelo menos 3 letras cada) antes de conferir. 💪");
+      return;
+    }
+  }
+  // 2) anticópia por pergunta
+  let bloqueio=false;
+  for(let qi=0;qi<bl.perguntas.length;qi++){
+    const pg=bl.perguntas[qi]; const ps=s.perg[qi]||(s.perg[qi]={});
+    const val=document.getElementById(bid+'_t'+qi).value;
+    ps.resp=val;
+    const copyEl=document.getElementById(bid+'_copy'+qi);
+    const d=detectTranscricao(val, blockText, pg.q);
+    if(d.transcrita){
+      if(!ps.tentou){
+        // 1ª detecção: NÃO aceita, pede reescrita
+        ps.tentou=val;
+        copyEl.textContent="✏️ Boa parte da sua resposta está igual ao texto. Tente reescrever com as suas palavras — explique como se fosse para um amigo, sem olhar o texto. Pode ficar mais curto e simples, o que vale é ser SEU!";
+        copyEl.style.display="block";
+        bloqueio=true;
+      }else{
+        // 2ª tentativa: aceita, mas marca vermelho
+        ps.transcrita=true;
+        copyEl.style.display="none";
+        const rw=document.getElementById(bid+'_red'+qi); if(rw) rw.style.display="block";
+        const q=document.getElementById(bid+'_q'+qi); if(q) q.classList.add('red');
+      }
+    }else{
+      ps.transcrita=false;
+      copyEl.style.display="none";
+      const rw=document.getElementById(bid+'_red'+qi); if(rw) rw.style.display="none";
+      const q=document.getElementById(bid+'_q'+qi); if(q) q.classList.remove('red');
+    }
+  }
+  save();
+  if(bloqueio){ return; } // não abre ainda
+  // aprovado: revela modelos e libera próximo
+  s.conferido=true;
+  save(); render();
+  const el=document.getElementById(bid);
+}
+
+function showMini(bid,msg){
+  // usa o primeiro alerta copy do bloco como aviso simples
+  const copyEl=document.getElementById(bid+'_copy0');
+  if(copyEl){ copyEl.textContent=msg; copyEl.style.display="block"; setTimeout(()=>{copyEl.style.display="none";},4000); }
+}
+
+function atualizarRevisar(){
+  const box=document.getElementById('revisarBox'); const ul=document.getElementById('revisarList');
+  ul.innerHTML=""; let n=0;
+  BLOCOS.forEach(bl=>{
+    const s=st(bl.id);
+    bl.perguntas.forEach((pg,qi)=>{
+      const ps=s.perg[qi]||{};
+      let motivo="";
+      if(ps.transcrita) motivo="resposta muito parecida com o texto";
+      let anyNao=false; (pg.chk||[]).forEach((c,ci)=>{ if(ps.chk&&ps.chk[ci]==='nao') anyNao=true; });
+      if(anyNao) motivo=motivo?motivo+" e algum 'não' na autoavaliação":"algum 'não' na autoavaliação";
+      if(motivo){ n++; const li=document.createElement('li'); li.innerHTML=`<b>${bl.titulo}</b>, pergunta ${qi+1} — ${motivo}.`; ul.appendChild(li); }
+    });
+  });
+  box.style.display = n>0 ? "block":"none";
+}
+
+// ====== EXPORTAR / IMPORTAR / ZERAR ======
+function exportar(){
+  const data=JSON.stringify(store,null,2);
+  const blob=new Blob([data],{type:"application/json"});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download="leitura-geografia-6ano.json"; a.click();
+}
+function abrirImport(){ document.getElementById('importModal').classList.add('show'); }
+function fecharImport(){ document.getElementById('importModal').classList.remove('show'); }
+function fazerImport(){
+  try{ const t=document.getElementById('importText').value; const obj=JSON.parse(t); store=obj; if(!store.blocos)store.blocos={}; save(); render(); fecharImport(); }
+  catch(e){ document.getElementById('importText').value="⚠️ Texto inválido. Cole o conteúdo exportado.\n\n"+document.getElementById('importText').value; }
+}
+function zerar(){
+  store={blocos:{}};
+  try{ localStorage.removeItem(KEY); }catch(e){}
+  save(); render();
+}
+
+// ====== INÍCIO ======
+load(); render();
+if(store.quando){ document.getElementById('saveInfo').textContent="Salvo "+store.quando; }
+</script>
+</body>
+</html>
