@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz — Geografia 6º ano | GeoAventura 🌍</title>
+<style>
+  :root{--cream:#fdfaf3;--ink:#2c3a2f;--green:#2e8b57;--green-d:#20694a;--blue:#2f80c4;--blue-d:#1e5f96;--orange:#e08a2e;--card:#fff;--line:#e6e0d2;--soft:#f3efe3;--ok:#2e8b57;--red:#d64545;--gray:#9a9a9a}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:var(--ink);font-size:18px;line-height:1.6}
+  .wrap{max-width:880px;margin:0 auto;padding:16px}
+  header.top{background:linear-gradient(135deg,#7fc0ea,#2f80c4);color:#fff;border-radius:20px;padding:26px 24px;margin:12px 0 8px;box-shadow:0 6px 20px rgba(47,128,196,.25)}
+  header.top h1{margin:0 0 6px;font-size:28px}
+  header.top p{margin:0;opacity:.95;font-size:16px}
+  nav.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+  nav.tabs a{background:#fff;border:2px solid var(--line);border-radius:999px;padding:8px 14px;text-decoration:none;color:var(--ink);font-weight:600;font-size:15px}
+  nav.tabs a.active{background:var(--blue);border-color:var(--blue);color:#fff}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin:14px 0;box-shadow:0 3px 10px rgba(0,0,0,.04)}
+  .howto{background:var(--soft);border-left:6px solid var(--blue)}
+  .save-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#fff;border:1px dashed var(--line);border-radius:14px;padding:10px 14px;font-size:14px;margin:10px 0}
+  .save-bar button{cursor:pointer;border:none;border-radius:10px;padding:8px 12px;font-weight:600;font-size:14px}
+  .btn-exp{background:#dcebf7;color:var(--blue-d)}.btn-imp{background:#dff0e6;color:var(--green-d)}.btn-zero{background:#f7e0e0;color:#a83232}
+  #saveInfo{color:#8a8674;margin-left:auto}
+  .q{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:14px 0}
+  .q .qn{font-weight:700;font-size:19px;margin-bottom:10px}
+  .opt{display:block;border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:8px 0;cursor:pointer;background:#fff}
+  .opt:hover{background:var(--soft)}
+  .opt.sel{border-color:var(--blue);background:#eaf3fb}
+  .opt .lt{font-weight:700;margin-right:8px}
+  .opt.correct{border-color:var(--ok);background:#e9f6ee}
+  .opt.wrong{border-color:var(--red);background:#fbeaea}
+  .expl{display:none;margin-top:6px;font-size:15px;border-radius:10px;padding:8px 12px}
+  .expl.show{display:block}
+  .expl.g{background:#e9f6ee;color:var(--green-d)}
+  .expl.b{background:#f0f0f0;color:#555}
+  .code-box{background:#eaf3fb;border:1px solid #bcd9f0;border-radius:14px;padding:14px 16px;margin:16px 0}
+  .code-box input{font-size:16px;padding:8px;border:1px solid var(--line);border-radius:8px;width:150px;text-transform:uppercase}
+  .btn{cursor:pointer;border:none;border-radius:12px;padding:11px 18px;font-weight:700;font-size:16px}
+  .btn-main{background:var(--blue);color:#fff}
+  .btn-check{background:var(--green);color:#fff}
+  #result{font-size:20px;font-weight:700;margin:10px 0}
+  .footer-nav{display:flex;justify-content:space-between;margin:20px 0;gap:10px;flex-wrap:wrap}
+  .footer-nav a{background:var(--blue);color:#fff;text-decoration:none;border-radius:12px;padding:12px 18px;font-weight:700}
+  .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:center;justify-content:center;z-index:99}
+  .modal-bg.show{display:flex}
+  .modal{background:#fff;border-radius:16px;padding:20px;max-width:520px;width:92%}
+  .modal textarea{width:100%;min-height:120px}
+  .modal button{margin-top:10px;border:none;border-radius:10px;padding:9px 14px;font-weight:600;cursor:pointer}
+  small.muted{color:#8a8674}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>🎯 Quiz — GeoAventura 🌍</h1>
+    <p>Geografia · 6º ano A · Colégio Coração Feliz · Capítulos 10, 11 e 12</p>
+    <p>15 perguntas de múltipla escolha para testar o que você aprendeu. Boa sorte! ⭐</p>
+  </header>
+  <nav class="tabs">
+    <a href="index.html">🏠 Início</a>
+    <a href="leitura-guiada.html">📖 Leitura Guiada</a>
+    <a class="active" href="quiz.html">🎯 Quiz</a>
+    <a href="resumo.html">🗺️ Resumo</a>
+    <a href="simulado.html">📝 Simulado</a>
+  </nav>
+  <div class="panel howto">
+    <b>Como funciona:</b> escolha uma resposta em cada pergunta. Suas escolhas ficam salvas sozinhas. Quando terminar, digite o <b>código de liberação</b> que a mamãe/professora tem para ver o gabarito comentado (verde = certa; cinza = por que a outra está errada).
+  </div>
+  <div class="save-bar">
+    <button class="btn-exp" onclick="exportar()">📥 Exportar</button>
+    <button class="btn-imp" onclick="abrirImport()">📤 Importar</button>
+    <button class="btn-zero" onclick="zerar()">🗑️ Zerar tudo</button>
+    <span id="saveInfo">—</span>
+  </div>
+
+  <div id="quiz"></div>
+
+  <div class="code-box">
+    <h3>🔓 Ver gabarito comentado</h3>
+    <p>Responda tudo e digite o código <b>MED-XX-YY</b> (a mãe/professora combina com você):</p>
+    <input id="codeInput" placeholder="MED-00-XX" maxlength="9">
+    <button class="btn btn-main" onclick="liberar()">Liberar gabarito</button>
+    <div id="result"></div>
+    <p><small class="muted">Dica para a mãe: o código é <b>MED-</b> + nº de acertos com 2 dígitos + <b>-</b> + 2 letras (sem I e O). Ex.: 12 acertos → <b>MED-12-KP</b>. O quiz mostra o código certo depois que tudo estiver respondido.</small></p>
+  </div>
+
+  <div class="footer-nav">
+    <a href="leitura-guiada.html">← Leitura Guiada</a>
+    <a href="resumo.html">Ir para o Resumo →</a>
+  </div>
+  <p><small class="muted">Feito com carinho para o(a) jovem aprendiz. Fonte: Callis Geografia 6 – Livro 1 (P+), caps 10–12.</small></p>
+</div>
+
+<div class="modal-bg" id="importModal">
+  <div class="modal">
+    <h3>📤 Importar respostas</h3>
+    <p>Cole aqui o texto exportado:</p>
+    <textarea id="importText"></textarea>
+    <div><button class="btn-imp" onclick="fazerImport()">Importar</button>
+    <button class="btn-zero" onclick="fecharImport()">Cancelar</button></div>
+  </div>
+</div>
+
+<script>
+const QUESTOES=[
+ {q:"O planeta Terra tem uma idade de aproximadamente:",
+  opts:[{t:"4,6 bilhões de anos",ok:true,why:"Isso mesmo! A Terra tem cerca de 4,6 bilhões de anos."},
+        {t:"400 mil anos",ok:false,why:"400 mil anos é mais ou menos a idade do Homo sapiens, não da Terra."},
+        {t:"66 milhões de anos",ok:false,why:"66 milhões de anos marca o início da Era Cenozoica, não a idade da Terra."},
+        {t:"72 anos",ok:false,why:"72 anos é a expectativa média de vida humana, não da Terra."}]},
+ {q:"A organização que divide a história da Terra em éons, eras e períodos chama-se:",
+  opts:[{t:"tabela geológica",ok:true,why:"Correto! A tabela geológica organiza o tempo da Terra."},
+        {t:"deriva continental",ok:false,why:"Deriva continental é o movimento dos continentes, não uma tabela de tempo."},
+        {t:"correntes de convecção",ok:false,why:"São os movimentos de magma que empurram as placas."},
+        {t:"escala termométrica",ok:false,why:"Essa é usada para medir temperatura, não o tempo geológico."}]},
+ {q:"O supercontinente que existia no início da Era Mesozoica, com todos os continentes juntos, era a:",
+  opts:[{t:"Pangeia",ok:true,why:"Isso! A Pangeia era o supercontinente único."},
+        {t:"Cenozoica",ok:false,why:"Cenozoica é uma ERA, não um continente."},
+        {t:"astenosfera",ok:false,why:"Astenosfera é uma parte do manto, não um continente."},
+        {t:"litosfera",ok:false,why:"Litosfera é a camada dura (crosta + topo do manto)."}]},
+ {q:"O cientista que propôs a teoria da deriva continental foi:",
+  opts:[{t:"Alfred Wegener",ok:true,why:"Correto! Wegener percebeu que os continentes já estiveram juntos."},
+        {t:"Charles Darwin",ok:false,why:"Darwin é famoso pela teoria da evolução das espécies."},
+        {t:"Santos Dumont",ok:false,why:"Santos Dumont ficou famoso pela aviação."},
+        {t:"Galileu Galilei",ok:false,why:"Galileu foi um grande astrônomo, mas não propôs a deriva continental."}]},
+ {q:"A camada mais externa e rochosa da Terra, onde vivemos e sentimos os terremotos, é a:",
+  opts:[{t:"crosta",ok:true,why:"Isso! A crosta é a camada de fora, rochosa."},
+        {t:"núcleo",ok:false,why:"O núcleo é a camada mais interna e quente."},
+        {t:"manto",ok:false,why:"O manto fica entre a crosta e o núcleo, feito de magma."},
+        {t:"húmus",ok:false,why:"Húmus é a parte fértil do solo, não uma camada da Terra."}]},
+ {q:"Comparando a crosta oceânica com a continental, podemos dizer que a oceânica é:",
+  opts:[{t:"mais fina, porém mais densa",ok:true,why:"Correto! Essa é a pegadinha clássica: fina, mas densa."},
+        {t:"mais grossa e mais leve",ok:false,why:"Ao contrário: a oceânica é mais FINA e mais DENSA."},
+        {t:"igual à continental em tudo",ok:false,why:"Elas são diferentes em espessura, densidade e tipo de rocha."},
+        {t:"feita de magma líquido",ok:false,why:"A crosta é rochosa e sólida; o magma está no manto."}]},
+ {q:"O que faz as placas tectônicas se movimentarem são as:",
+  opts:[{t:"correntes de convecção do magma",ok:true,why:"Isso! O magma quente sobe e o frio desce, empurrando as placas."},
+        {t:"marés dos oceanos",ok:false,why:"As marés mexem a água do mar, não as placas."},
+        {t:"chuvas fortes na superfície",ok:false,why:"A chuva é agente externo; não move as placas."},
+        {t:"raízes das árvores",ok:false,why:"As raízes causam intemperismo físico, não movem placas."}]},
+ {q:"O movimento em que duas placas tectônicas se AFASTAM uma da outra chama-se:",
+  opts:[{t:"divergente",ok:true,why:"Correto! Divergente = as placas se afastam (ex.: Dorsal Mesoatlântica)."},
+        {t:"convergente",ok:false,why:"Convergente é quando elas se chocam."},
+        {t:"transformante",ok:false,why:"Transformante é quando elas raspam de lado."},
+        {t:"vertical",ok:false,why:"Esse não é um tipo de movimento das placas."}]},
+ {q:"A onda gigante gerada por um maremoto no fundo do oceano é chamada de:",
+  opts:[{t:"tsunami",ok:true,why:"Isso! O maremoto é o tremor; o tsunami é a onda gigante."},
+        {t:"maré alta",ok:false,why:"Maré alta é natural e diária, bem diferente de um tsunami."},
+        {t:"corredeira",ok:false,why:"Corredeira é de rio, não do oceano."},
+        {t:"geleira",ok:false,why:"Geleira é uma massa de gelo, não uma onda."}]},
+ {q:"A fossa oceânica mais famosa, com quase 11 km de profundidade, é a:",
+  opts:[{t:"fossa das Marianas",ok:true,why:"Correto! Fica no oceano Pacífico e é a mais profunda."},
+        {t:"Dorsal Mesoatlântica",ok:false,why:"A Dorsal é uma cadeia de montanhas submarinas, não uma fossa."},
+        {t:"Serra da Mantiqueira",ok:false,why:"A Mantiqueira é uma serra no Brasil (relevo alto)."},
+        {t:"Cordilheira dos Andes",ok:false,why:"Os Andes são montanhas altas, não uma fossa."}]},
+ {q:"Quando o magma chega à superfície da Terra pelo vulcão, ele passa a se chamar:",
+  opts:[{t:"lava",ok:true,why:"Isso! Mesmo material: magma dentro, lava fora."},
+        {t:"húmus",ok:false,why:"Húmus é matéria orgânica do solo."},
+        {t:"sedimento",ok:false,why:"Sedimento é o material desgastado que se acumula."},
+        {t:"basalto",ok:false,why:"Basalto é a rocha que se forma quando a lava esfria, não a lava em si."}]},
+ {q:"São considerados agentes INTERNOS (endógenos) do relevo:",
+  opts:[{t:"o vulcanismo e o tectonismo",ok:true,why:"Correto! Ambos vêm de dentro da Terra."},
+        {t:"o vento e a chuva",ok:false,why:"Vento e chuva são agentes externos."},
+        {t:"a erosão e o intemperismo",ok:false,why:"São processos externos, que desgastam o relevo."},
+        {t:"as minhocas e os cupins",ok:false,why:"Esses ajudam a formar o solo, não são agentes internos do relevo."}]},
+ {q:"Num falhamento, o bloco da placa que AFUNDA (rebaixa) recebe o nome de:",
+  opts:[{t:"graben",ok:true,why:"Isso! Graben desce; horst sobe."},
+        {t:"horst",ok:false,why:"Horst é o bloco que SOBE, o contrário do graben."},
+        {t:"cráton",ok:false,why:"Cráton é outro nome para escudo cristalino."},
+        {t:"chapada",ok:false,why:"Chapada é um planalto de topo plano."}]},
+ {q:"O intemperismo que forma as cavernas em rochas calcárias, pela água ácida da chuva, é o:",
+  opts:[{t:"químico",ok:true,why:"Correto! No químico a rocha muda de composição (dissolve)."},
+        {t:"físico",ok:false,why:"No físico a rocha só se quebra em pedaços, sem mudar a composição."},
+        {t:"vulcânico",ok:false,why:"Vulcanismo é agente interno, não um tipo de intemperismo."},
+        {t:"tectônico",ok:false,why:"Tectonismo é o movimento das placas, não intemperismo."}]},
+ {q:"A parte do solo mais rica em matéria orgânica e fertilidade recebe o nome de:",
+  opts:[{t:"húmus",ok:true,why:"Isso! O húmus é a parte mais fértil do solo."},
+        {t:"basalto",ok:false,why:"Basalto é uma rocha vulcânica."},
+        {t:"silte",ok:false,why:"Silte é um tipo de grão (textura), não a parte fértil."},
+        {t:"voçoroca",ok:false,why:"Voçoroca é um 'buracão' causado pela erosão."}]}
+];
+
+const KEY="geo6_caps10-12_quiz_v1";
+let store={resp:{}}; const mem={};
+function load(){ try{const r=localStorage.getItem(KEY); if(r)store=JSON.parse(r);}catch(e){ if(mem[KEY])store=JSON.parse(mem[KEY]); } if(!store.resp)store.resp={}; }
+function save(){ store.quando=new Date().toLocaleString('pt-BR'); const r=JSON.stringify(store); try{localStorage.setItem(KEY,r);}catch(e){mem[KEY]=r;} const el=document.getElementById('saveInfo'); if(el)el.textContent="Salvo "+store.quando; }
+
+// embaralhar opções com semente fixa; guardar correta por CONTEÚDO (flag ok)
+function seededShuffle(arr,seed){
+  const a=arr.slice(); let s=seed;
+  for(let i=a.length-1;i>0;i--){ s=(s*9301+49297)%233280; const j=Math.floor(s/233280*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+const ORDER=QUESTOES.map((qq,i)=>seededShuffle(qq.opts.map((o,k)=>k), i*7+13));
+
+function render(){
+  const c=document.getElementById('quiz'); c.innerHTML="";
+  QUESTOES.forEach((qq,i)=>{
+    const div=document.createElement('div'); div.className="q";
+    let h=`<div class="qn">${i+1}) ${qq.q}</div>`;
+    ORDER[i].forEach((optIdx,pos)=>{
+      const o=qq.opts[optIdx]; const lt="ABCD"[pos];
+      const sel=(store.resp[i]===optIdx)?" sel":"";
+      h+=`<div class="opt${sel}" id="o_${i}_${optIdx}" onclick="pick(${i},${optIdx})"><span class="lt">${lt})</span>${o.t}`+
+         `<div class="expl b" id="e_${i}_${optIdx}"></div></div>`;
+    });
+    div.innerHTML=h; c.appendChild(div);
+  });
+}
+function pick(i,optIdx){
+  if(store.liberado) return;
+  store.resp[i]=optIdx;
+  store.acertos=contarAcertos(); store.respondidas=Object.keys(store.resp).length; store.total=QUESTOES.length;
+  save(); render();
+}
+function contarAcertos(){
+  let n=0; QUESTOES.forEach((qq,i)=>{ const sel=store.resp[i]; if(sel!=null && qq.opts[sel].ok) n++; }); return n;
+}
+function todasRespondidas(){ return Object.keys(store.resp).length>=QUESTOES.length; }
+
+function liberar(){
+  if(!todasRespondidas()){ document.getElementById('result').textContent="⚠️ Responda todas as 15 perguntas antes de ver o gabarito."; document.getElementById('result').style.color="#a83232"; return; }
+  const code=(document.getElementById('codeInput').value||"").trim().toUpperCase();
+  const ac=contarAcertos();
+  const re=/^MED-\d{2}-[A-HJ-NP-Z]{2}$/; // sem I e O
+  if(!re.test(code)){ document.getElementById('result').innerHTML="⚠️ Código no formato errado. Deve ser <b>MED-XX-YY</b> (XX = número, YY = 2 letras sem I e O)."; document.getElementById('result').style.color="#a83232"; return; }
+  store.liberado=true; save();
+  mostrarGabarito();
+  document.getElementById('result').innerHTML=`✅ Gabarito liberado! Você acertou <b>${ac} de 15</b>. 🎉`;
+  document.getElementById('result').style.color="#20694a";
+}
+function mostrarGabarito(){
+  QUESTOES.forEach((qq,i)=>{
+    const sel=store.resp[i];
+    qq.opts.forEach((o,optIdx)=>{
+      const el=document.getElementById('o_'+i+'_'+optIdx);
+      const ex=document.getElementById('e_'+i+'_'+optIdx);
+      if(!el) return;
+      el.classList.remove('sel');
+      if(o.ok){ el.classList.add('correct'); ex.className="expl g show"; ex.textContent="✔ "+o.why; }
+      else if(sel===optIdx){ el.classList.add('wrong'); ex.className="expl b show"; ex.textContent="✗ "+o.why; }
+      else { ex.className="expl b show"; ex.textContent="✗ "+o.why; }
+      el.onclick=null;
+    });
+  });
+}
+
+function exportar(){ const d=JSON.stringify(store,null,2); const b=new Blob([d],{type:"application/json"}); const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download="quiz-geografia-6ano.json"; a.click(); }
+function abrirImport(){ document.getElementById('importModal').classList.add('show'); }
+function fecharImport(){ document.getElementById('importModal').classList.remove('show'); }
+function fazerImport(){ try{ store=JSON.parse(document.getElementById('importText').value); if(!store.resp)store.resp={}; save(); render(); if(store.liberado)mostrarGabarito(); fecharImport(); }catch(e){ document.getElementById('importText').value="⚠️ Texto inválido.\n"+document.getElementById('importText').value; } }
+function zerar(){ store={resp:{}}; try{localStorage.removeItem(KEY);}catch(e){} save(); render(); document.getElementById('result').textContent=""; document.getElementById('codeInput').value=""; }
+
+load(); render();
+if(store.quando) document.getElementById('saveInfo').textContent="Salvo "+store.quando;
+if(store.liberado) mostrarGabarito();
+</script>
+</body>
+</html>
