@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulado — Geografia 6º ano | GeoAventura 🌍</title>
+<style>
+  :root{--cream:#fdfaf3;--ink:#2c3a2f;--navy:#173a5e;--navy2:#1f4e79;--red:#d64545;--red-d:#b12f2f;--green:#2e8b57;--green-d:#20694a;--card:#fff;--line:#e6e0d2;--soft:#f3efe3;--gray:#8a8a8a}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:var(--ink);font-size:18px;line-height:1.6}
+  .wrap{max-width:900px;margin:0 auto;padding:16px}
+  header.top{background:var(--navy);color:#fff;border-radius:20px;padding:22px 24px;margin:12px 0 0;border-bottom:8px solid var(--red)}
+  header.top h1{margin:0 0 6px;font-size:26px}
+  header.top p{margin:0;opacity:.95;font-size:15px}
+  .prova-head{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin:12px 0;font-size:15px}
+  .prova-head b{color:var(--navy2)}
+  nav.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+  nav.tabs a{background:#fff;border:2px solid var(--line);border-radius:999px;padding:8px 14px;text-decoration:none;color:var(--ink);font-weight:600;font-size:15px}
+  nav.tabs a.active{background:var(--navy);border-color:var(--navy);color:#fff}
+  .save-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#fff;border:1px dashed var(--line);border-radius:14px;padding:10px 14px;font-size:14px;margin:10px 0}
+  .save-bar button{cursor:pointer;border:none;border-radius:10px;padding:8px 12px;font-weight:600;font-size:14px}
+  .btn-exp{background:#dcebf7;color:var(--navy2)}.btn-imp{background:#dff0e6;color:var(--green-d)}.btn-zero{background:#f7e0e0;color:#a83232}
+  #saveInfo{color:#8a8674;margin-left:auto}
+  .q{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:12px 0}
+  .q .qn{font-weight:700;margin-bottom:8px}
+  .q .pts{color:var(--red-d);font-weight:700;font-size:14px}
+  .q .badge{display:inline-block;background:#eef2f7;color:var(--navy2);border-radius:999px;font-size:12px;padding:2px 8px;margin-left:6px}
+  .opt{display:block;border:1px solid var(--line);border-radius:10px;padding:9px 13px;margin:7px 0;cursor:pointer}
+  .opt:hover{background:var(--soft)}
+  .opt.sel{border-color:var(--navy2);background:#eaf1f8}
+  .opt .lt{font-weight:700;margin-right:8px}
+  .opt.correct{border-color:var(--green);background:#e9f6ee}
+  .opt.wrong{border-color:var(--red);background:#fbeaea}
+  .expl{display:none;margin-top:6px;font-size:14px;border-radius:8px;padding:7px 11px}
+  .expl.show{display:block}.expl.g{background:#e9f6ee;color:var(--green-d)}.expl.b{background:#f0f0f0;color:#555}
+  .code-box{background:#fdeeee;border:1px solid #f0c4c4;border-radius:14px;padding:14px 16px;margin:16px 0}
+  .code-box input{font-size:16px;padding:8px;border:1px solid var(--line);border-radius:8px;width:150px;text-transform:uppercase}
+  .btn{cursor:pointer;border:none;border-radius:12px;padding:11px 18px;font-weight:700;font-size:16px}
+  .btn-red{background:var(--red);color:#fff}
+  #result{font-size:20px;font-weight:700;margin:10px 0}
+  .progress{position:sticky;top:0;background:var(--cream);padding:8px 0;z-index:5}
+  .bar{height:12px;background:#eee;border-radius:999px;overflow:hidden}
+  .bar>div{height:100%;background:var(--red);width:0}
+  .footer-nav{display:flex;justify-content:space-between;margin:20px 0;gap:10px;flex-wrap:wrap}
+  .footer-nav a{background:var(--navy);color:#fff;text-decoration:none;border-radius:12px;padding:12px 18px;font-weight:700}
+  .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:center;justify-content:center;z-index:99}
+  .modal-bg.show{display:flex}
+  .modal{background:#fff;border-radius:16px;padding:20px;max-width:520px;width:92%}
+  .modal textarea{width:100%;min-height:120px}
+  .modal button{margin-top:10px;border:none;border-radius:10px;padding:9px 14px;font-weight:600;cursor:pointer}
+  small.muted{color:#8a8674}
+  .romanas{background:#f7faff;border:1px dashed #b9cbe0;border-radius:10px;padding:8px 12px;margin:8px 0;font-size:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>📝 Simulado — GeoAventura 🌍</h1>
+    <p>Colégio Coração Feliz · Ensino Fundamental · Prova de Geografia</p>
+  </header>
+  <div class="prova-head">
+    <b>Aluno(a):</b> ______________________________ &nbsp; <b>Turma:</b> 6º ano A · matutino<br>
+    <b>Professora:</b> Gabrielly de Sá Machado Figueiredo &nbsp; <b>Data da prova:</b> 29/09<br>
+    <b>Conteúdo:</b> Capítulos 10, 11 e 12 — Tempo geológico, Relevo e Solo &nbsp; · &nbsp; <b>28 questões</b>
+  </div>
+  <nav class="tabs">
+    <a href="index.html">🏠 Início</a>
+    <a href="leitura-guiada.html">📖 Leitura Guiada</a>
+    <a href="quiz.html">🎯 Quiz</a>
+    <a href="resumo.html">🗺️ Resumo</a>
+    <a class="active" href="simulado.html">📝 Simulado</a>
+  </nav>
+
+  <div class="progress"><div class="bar"><div id="pbar"></div></div>
+    <small class="muted" id="ptxt">0 de 28 respondidas</small></div>
+
+  <div class="save-bar">
+    <button class="btn-exp" onclick="exportar()">📥 Exportar</button>
+    <button class="btn-imp" onclick="abrirImport()">📤 Importar</button>
+    <button class="btn-zero" onclick="zerar()">🗑️ Zerar tudo</button>
+    <span id="saveInfo">—</span>
+  </div>
+
+  <div id="sim"></div>
+
+  <div class="code-box">
+    <h3>🔓 Ver gabarito comentado</h3>
+    <p>Responda tudo e digite o código <b>SIM-XX-YY</b> (a mãe/professora combina com você):</p>
+    <input id="codeInput" placeholder="SIM-00-XX" maxlength="9">
+    <button class="btn btn-red" onclick="liberar()">Liberar gabarito</button>
+    <div id="result"></div>
+    <p><small class="muted">Dica para a mãe: o código é <b>SIM-</b> + nº de acertos com 2 dígitos + <b>-</b> + 2 letras (sem I e O). Ex.: 22 acertos → <b>SIM-22-KP</b>.</small></p>
+  </div>
+
+  <div class="footer-nav">
+    <a href="resumo.html">← Resumo</a>
+    <a href="index.html">🏠 Início</a>
+  </div>
+  <p><small class="muted">Feito com carinho para o(a) jovem aprendiz. Questões originais baseadas em Callis Geografia 6 – Livro 1 (P+), caps 10–12.</small></p>
+</div>
+
+<div class="modal-bg" id="importModal">
+  <div class="modal"><h3>📤 Importar respostas</h3><p>Cole o texto exportado:</p>
+    <textarea id="importText"></textarea>
+    <div><button class="btn-imp" onclick="fazerImport()">Importar</button>
+    <button class="btn-zero" onclick="fecharImport()">Cancelar</button></div></div>
+</div>
+
+<script>
+const Q=[
+ {q:"A idade aproximada do planeta Terra é de:",opts:[
+   {t:"4,6 bilhões de anos",ok:true,why:"Correto! A Terra tem cerca de 4,6 bilhões de anos."},
+   {t:"11 mil anos",ok:false,why:"11 mil anos é a duração aproximada do Holoceno."},
+   {t:"252 milhões de anos",ok:false,why:"Marca o início da Era Mesozoica, não a idade da Terra."},
+   {t:"400 anos",ok:false,why:"Muito pouco: a Terra é bilhões de vezes mais antiga."}]},
+ {q:"A era geológica mais recente, dos últimos 66 milhões de anos, é a:",opts:[
+   {t:"Cenozoica",ok:true,why:"Isso! A Cenozoica é a era mais recente."},
+   {t:"Mesozoica",ok:false,why:"A Mesozoica veio antes (252 a 66 milhões de anos)."},
+   {t:"Pré-cambriano",ok:false,why:"É a divisão mais antiga, não a mais recente."},
+   {t:"Holoceno",ok:false,why:"O Holoceno é uma época DENTRO da Cenozoica."}]},
+ {q:"O período em que surgiu o ser humano atual, dos últimos 11 mil anos, chama-se:",opts:[
+   {t:"Holoceno",ok:true,why:"Correto! O Holoceno é a época mais recente da Era Cenozoica."},
+   {t:"Pangeia",ok:false,why:"Pangeia era o supercontinente, não um período."},
+   {t:"Gondwana",ok:false,why:"Gondwana era um dos continentes formados pela Pangeia."},
+   {t:"Laurásia",ok:false,why:"Laurásia também era um dos continentes da divisão da Pangeia."}]},
+ {q:"O Pré-cambriano é importante porque corresponde a:",opts:[
+   {t:"mais da metade de todo o tempo geológico",ok:true,why:"Isso! Sozinho ele ocupa mais de 50% do tempo geológico."},
+   {t:"apenas os últimos 100 anos",ok:false,why:"Nada disso: é a divisão mais ANTIGA e longa."},
+   {t:"o período do surgimento do ser humano",ok:false,why:"O ser humano atual surgiu no Holoceno, bem no fim."},
+   {t:"a época da formação dos Andes",ok:false,why:"Os Andes se formaram na Era Cenozoica."}]},
+ {q:"Com o passar de milhões de anos, o supercontinente Pangeia se dividiu em:",opts:[
+   {t:"Gondwana e Laurásia",ok:true,why:"Correto! Esses foram os dois grandes continentes formados."},
+   {t:"América e Europa",ok:false,why:"Esses são continentes atuais, formados bem depois."},
+   {t:"crosta e manto",ok:false,why:"Essas são camadas da Terra, não continentes."},
+   {t:"horst e graben",ok:false,why:"São blocos de um falhamento, não continentes."}]},
+ {q:"Da separação da Gondwana (América do Sul e África), teve início a formação do:",opts:[
+   {t:"oceano Atlântico",ok:true,why:"Isso! O Atlântico surgiu entre a América do Sul e a África."},
+   {t:"oceano Pacífico",ok:false,why:"Não foi o Pacífico que surgiu dessa separação específica."},
+   {t:"Himalaia",ok:false,why:"O Himalaia é uma cordilheira, formada por choque de placas."},
+   {t:"rio Amazonas",ok:false,why:"O rio Amazonas se formou depois, na Era Cenozoica."}]},
+ {q:"Assinale a ordem correta das camadas da Terra, da mais externa para a mais interna:",opts:[
+   {t:"crosta, manto e núcleo",ok:true,why:"Correto! De fora para dentro: crosta → manto → núcleo."},
+   {t:"núcleo, manto e crosta",ok:false,why:"Está ao contrário: essa é de dentro para fora."},
+   {t:"manto, crosta e núcleo",ok:false,why:"A crosta é a mais externa, não o manto."},
+   {t:"crosta, núcleo e manto",ok:false,why:"O manto fica ENTRE a crosta e o núcleo."}]},
+ {q:"O manto terrestre é constituído principalmente de:",opts:[
+   {t:"magma (rocha derretida e pastosa)",ok:true,why:"Isso! O manto é feito de magma quente e pastoso."},
+   {t:"água salgada",ok:false,why:"Água salgada está nos oceanos, sobre a crosta."},
+   {t:"gelo",ok:false,why:"O interior da Terra é quentíssimo, não tem gelo."},
+   {t:"areia",ok:false,why:"Areia é material da superfície, não do manto."}]},
+ {q:"O núcleo interno da Terra se apresenta no estado:",opts:[
+   {t:"sólido, por causa da altíssima pressão",ok:true,why:"Correto! A pressão enorme mantém o núcleo interno sólido."},
+   {t:"gasoso",ok:false,why:"Não é gasoso; é sólido no interno e líquido no externo."},
+   {t:"líquido igual ao núcleo externo",ok:false,why:"O externo é líquido, mas o interno é sólido."},
+   {t:"pastoso como o manto",ok:false,why:"O pastoso é o magma do manto, não o núcleo interno."}]},
+ {q:"A litosfera é formada pela:",opts:[
+   {t:"crosta terrestre e o topo do manto",ok:true,why:"Isso! A litosfera é a parte dura: crosta + topo do manto."},
+   {t:"apenas o núcleo interno",ok:false,why:"O núcleo não faz parte da litosfera."},
+   {t:"água dos oceanos",ok:false,why:"Isso seria a hidrosfera, não a litosfera."},
+   {t:"camada de ar ao redor da Terra",ok:false,why:"Essa é a atmosfera, não a litosfera."}]},
+ {q:"A descontinuidade de Mohorovicic é a zona que marca:",opts:[
+   {t:"o fim da crosta e o início do manto",ok:true,why:"Correto! É a 'fronteira' entre crosta e manto."},
+   {t:"o centro exato da Terra",ok:false,why:"O centro é o núcleo interno, não a descontinuidade."},
+   {t:"a superfície dos oceanos",ok:false,why:"Não tem relação com a superfície do mar."},
+   {t:"a separação entre dois continentes",ok:false,why:"Não é uma separação de continentes."}]},
+ {q:"Existem cerca de 50 placas tectônicas no mundo. Elas se movem por causa das:",opts:[
+   {t:"correntes de convecção do magma",ok:true,why:"Isso! O magma sobe quente e desce frio, movendo as placas."},
+   {t:"ondas do mar",ok:false,why:"As ondas mexem a água, não as placas."},
+   {t:"chuvas e ventos",ok:false,why:"São agentes externos; não movem as placas."},
+   {t:"marés da Lua",ok:false,why:"As marés não são responsáveis pelo movimento das placas."}]},
+ {q:"O movimento em que duas placas raspam uma na outra de lado, gerando muitos terremotos, é o:",opts:[
+   {t:"transformante",ok:true,why:"Correto! Transformante = atrito lateral (ex.: costa oeste dos EUA)."},
+   {t:"divergente",ok:false,why:"Divergente é quando elas se afastam."},
+   {t:"convergente",ok:false,why:"Convergente é quando elas se chocam."},
+   {t:"sedimentar",ok:false,why:"Sedimentar não é um tipo de movimento de placa."}]},
+ {q:"Quando duas placas se chocam e uma se dobra para cima, podem se formar:",opts:[
+   {t:"grandes cordilheiras (montanhas)",ok:true,why:"Isso! O choque forma cordilheiras como o Himalaia."},
+   {t:"planícies costeiras",ok:false,why:"Planícies se formam por acúmulo de sedimentos, não por choque."},
+   {t:"desertos",ok:false,why:"Desertos dependem do clima, não do choque de placas."},
+   {t:"cavernas de calcário",ok:false,why:"Essas vêm do intemperismo químico."}]},
+ {q:"A Dorsal Mesoatlântica, no meio do oceano Atlântico, é um bom exemplo de:",opts:[
+   {t:"movimento divergente (placas se afastando)",ok:true,why:"Correto! Ali as placas se afastam e o magma sobe."},
+   {t:"movimento convergente",ok:false,why:"No convergente as placas se chocam, não se afastam."},
+   {t:"erosão eólica",ok:false,why:"Erosão eólica é desgaste pelo vento, sem relação aqui."},
+   {t:"desertificação",ok:false,why:"Desertificação é um problema do solo, não das placas."}]},
+ {q:"As montanhas altas e pontiagudas resultam, principalmente, do movimento:",opts:[
+   {t:"convergente entre placas",ok:true,why:"Isso! O choque (convergente) empurra o relevo para cima."},
+   {t:"divergente entre placas",ok:false,why:"No divergente as placas se afastam (não formam montanhas assim)."},
+   {t:"das marés oceânicas",ok:false,why:"As marés não formam montanhas."},
+   {t:"da lixiviação do solo",ok:false,why:"Lixiviação é a 'lavagem' de minerais no solo."}]},
+ {q:"São exemplos de ILHAS VULCÂNICAS:",opts:[
+   {t:"Havaí e Fernando de Noronha",ok:true,why:"Correto! Ambas nasceram de vulcanismo submarino."},
+   {t:"Andes e Himalaia",ok:false,why:"Esses são cordilheiras, não ilhas."},
+   {t:"Pantanal e Amazônia",ok:false,why:"São regiões continentais brasileiras, não ilhas vulcânicas."},
+   {t:"Marianas e Mantiqueira",ok:false,why:"Marianas é uma fossa e Mantiqueira é uma serra."}]},
+ {q:"Entre os agentes internos, o de ação mais RÁPIDA na transformação do relevo é o:",opts:[
+   {t:"vulcanismo",ok:true,why:"Isso! Um vulcão pode mudar a paisagem em horas."},
+   {t:"intemperismo químico",ok:false,why:"O intemperismo é externo e MUITO lento."},
+   {t:"assoreamento",ok:false,why:"Assoreamento é o entupimento dos rios, processo externo."},
+   {t:"a lixiviação",ok:false,why:"Lixiviação é um processo lento no solo."}]},
+ {q:"Muitas pessoas moram perto de vulcões porque:",opts:[
+   {t:"os solos ali são muito férteis para a agricultura",ok:true,why:"Correto! Rochas vulcânicas formam solos férteis."},
+   {t:"os vulcões espantam as tempestades",ok:false,why:"Isso não é verdade; vulcões não afastam tempestades."},
+   {t:"o solo próximo protege contra terremotos",ok:false,why:"O solo não protege contra terremotos."},
+   {t:"lá nunca faz frio",ok:false,why:"A temperatura depende do clima, não do vulcão."}]},
+ {q:"Os dobramentos modernos, como o Himalaia (onde fica o Everest, com 8.848 m), são:",opts:[
+   {t:"montanhas jovens, formadas na Era Cenozoica",ok:true,why:"Isso! São relevos jovens, do movimento convergente recente."},
+   {t:"as estruturas mais antigas da Terra",ok:false,why:"As mais antigas são os escudos cristalinos (Pré-cambriano)."},
+   {t:"bacias cheias de petróleo",ok:false,why:"Petróleo está nas bacias sedimentares, não em montanhas."},
+   {t:"depressões abaixo do nível do mar",ok:false,why:"São elevações altíssimas, não depressões."}]},
+ {q:"Num falhamento, o bloco da placa que se rebaixa (desce) é chamado de:",opts:[
+   {t:"graben",ok:true,why:"Correto! Graben desce; horst sobe."},
+   {t:"horst",ok:false,why:"Horst é o bloco que SOBE."},
+   {t:"cráton",ok:false,why:"Cráton é o escudo cristalino."},
+   {t:"húmus",ok:false,why:"Húmus é a parte fértil do solo."}]},
+ {q:"É um exemplo de intemperismo FÍSICO:",opts:[
+   {t:"a água que congela nas fendas e vai quebrando a rocha",ok:true,why:"Isso! No físico a rocha se quebra em pedaços."},
+   {t:"a chuva ácida dissolvendo a rocha de calcário",ok:false,why:"Esse é intemperismo QUÍMICO (muda a composição)."},
+   {t:"a formação de petróleo",ok:false,why:"Petróleo não é intemperismo; forma-se por soterramento."},
+   {t:"o movimento das placas tectônicas",ok:false,why:"Isso é tectonismo, um agente interno."}]},
+ {q:"As bacias sedimentares são importantes porque nelas encontramos:",opts:[
+   {t:"petróleo e carvão mineral",ok:true,why:"Correto! São recursos energéticos das bacias sedimentares."},
+   {t:"apenas ferro e ouro",ok:false,why:"Minerais metálicos como ferro ficam nos escudos cristalinos."},
+   {t:"lava e magma",ok:false,why:"Lava e magma são de áreas vulcânicas."},
+   {t:"água salgada dos oceanos",ok:false,why:"Isso não define uma bacia sedimentar."}]},
+ {q:"O horizonte do solo mais superficial, formado por matéria orgânica e húmus, é o:",opts:[
+   {t:"horizonte O",ok:true,why:"Isso! O horizonte O é o mais de cima, cheio de matéria orgânica."},
+   {t:"horizonte C",ok:false,why:"O horizonte C é a transição para a rocha original (bem no fundo)."},
+   {t:"núcleo",ok:false,why:"Núcleo é uma camada da Terra, não do solo."},
+   {t:"astenosfera",ok:false,why:"Astenosfera é parte do manto, não do solo."}]},
+ {q:"A erosão do solo torna-se um problema mais grave, principalmente, por causa:",opts:[
+   {t:"do desmatamento e do uso intensivo do solo",ok:true,why:"Correto! Sem vegetação, a água leva o solo embora."},
+   {t:"do plantio de árvores nativas",ok:false,why:"Ao contrário: a vegetação PROTEGE o solo."},
+   {t:"das correntes de convecção",ok:false,why:"Essas movem as placas, não causam a erosão do solo."},
+   {t:"da rotação de culturas",ok:false,why:"A rotação de culturas AJUDA a conservar o solo."}]},
+ // ===== NÚMEROS ROMANOS =====
+ {romanas:true, q:"Sobre os agentes que transformam o relevo, analise as afirmativas:",
+  afirms:["I. O vulcanismo é um agente interno (endógeno).","II. A erosão é um agente externo (exógeno).","III. O tectonismo é um agente externo (exógeno).","IV. O vento é um agente externo que desgasta as rochas."],
+  opts:[
+   {t:"Apenas I, II e IV estão corretas",ok:true,why:"Correto! Só a III está errada — o tectonismo é INTERNO."},
+   {t:"Apenas I e III estão corretas",ok:false,why:"A III está errada (tectonismo é interno) e a II e a IV estão certas."},
+   {t:"Apenas II e III estão corretas",ok:false,why:"A III está errada; a I e a IV também estão corretas."},
+   {t:"I, II, III e IV estão corretas",ok:false,why:"A III está errada: o tectonismo é agente INTERNO, não externo."}]},
+ {romanas:true, q:"Sobre o solo, analise as afirmativas:",
+  afirms:["I. O húmus é a parte do solo rica em matéria orgânica e fertilidade.","II. O horizonte C é a transição entre o solo e a rocha original.","III. As minhocas prejudicam a fertilidade do solo.","IV. O solo é formado por minerais, água, ar e seres vivos."],
+  opts:[
+   {t:"Apenas I, II e IV estão corretas",ok:true,why:"Correto! A III está errada — as minhocas AJUDAM a fertilizar o solo."},
+   {t:"Apenas I e III estão corretas",ok:false,why:"A III está errada e a II e a IV estão certas."},
+   {t:"Apenas III e IV estão corretas",ok:false,why:"A III está errada; a I e a II estão corretas."},
+   {t:"I, II, III e IV estão corretas",ok:false,why:"A III está errada: as minhocas melhoram (não prejudicam) o solo."}]},
+ {romanas:true, q:"Sobre os movimentos das placas tectônicas, analise as afirmativas:",
+  afirms:["I. No movimento divergente, as placas se afastam.","II. No movimento convergente, as placas se chocam.","III. O movimento transformante é o responsável por separar continentes e formar oceanos.","IV. Um tsunami pode surgir do movimento convergente sob o oceano."],
+  opts:[
+   {t:"Apenas I, II e IV estão corretas",ok:true,why:"Correto! A III está errada — quem separa continentes é o movimento DIVERGENTE."},
+   {t:"Apenas I e II estão corretas",ok:false,why:"A IV também está correta (tsunami vem do convergente)."},
+   {t:"Apenas III e IV estão corretas",ok:false,why:"A III está errada; a I e a II estão corretas."},
+   {t:"I, II, III e IV estão corretas",ok:false,why:"A III está errada: separar continentes é o movimento divergente, não o transformante."}]}
+];
+
+const KEY="geo6_caps10-12_simulado_v1";
+let store={resp:{}}; const mem={};
+function load(){ try{const r=localStorage.getItem(KEY); if(r)store=JSON.parse(r);}catch(e){ if(mem[KEY])store=JSON.parse(mem[KEY]); } if(!store.resp)store.resp={}; }
+function save(){ store.quando=new Date().toLocaleString('pt-BR'); const r=JSON.stringify(store); try{localStorage.setItem(KEY,r);}catch(e){mem[KEY]=r;} const el=document.getElementById('saveInfo'); if(el)el.textContent="Salvo "+store.quando; }
+
+function seededShuffle(arr,seed){ const a=arr.slice(); let s=seed; for(let i=a.length-1;i>0;i--){ s=(s*9301+49297)%233280; const j=Math.floor(s/233280*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+const ORDER=Q.map((qq,i)=>seededShuffle(qq.opts.map((o,k)=>k), i*11+5));
+
+function render(){
+  const c=document.getElementById('sim'); c.innerHTML="";
+  Q.forEach((qq,i)=>{
+    const div=document.createElement('div'); div.className="q";
+    let h=`<div class="qn">${i+1}) <span class="pts">(0,5)</span> ${qq.q}${qq.romanas?'<span class="badge">números romanos</span>':''}</div>`;
+    if(qq.romanas){ h+=`<div class="romanas">${qq.afirms.join("<br>")}</div>`; }
+    ORDER[i].forEach((optIdx,pos)=>{
+      const o=qq.opts[optIdx]; const lt="ABCD"[pos];
+      const sel=(store.resp[i]===optIdx)?" sel":"";
+      h+=`<div class="opt${sel}" id="o_${i}_${optIdx}" onclick="pick(${i},${optIdx})"><span class="lt">${lt})</span>${o.t}`+
+         `<div class="expl b" id="e_${i}_${optIdx}"></div></div>`;
+    });
+    div.innerHTML=h; c.appendChild(div);
+  });
+  updProg();
+}
+function pick(i,optIdx){ if(store.liberado)return; store.resp[i]=optIdx; store.acertos=contarAcertos(); store.respondidas=Object.keys(store.resp).length; store.total=Q.length; save(); render(); }
+function updProg(){
+  const n=Object.keys(store.resp).length;
+  document.getElementById('pbar').style.width=Math.round(n/Q.length*100)+"%";
+  document.getElementById('ptxt').textContent=n+" de "+Q.length+" respondidas";
+}
+function contarAcertos(){ let n=0; Q.forEach((qq,i)=>{ const s=store.resp[i]; if(s!=null&&qq.opts[s].ok)n++; }); return n; }
+function todas(){ return Object.keys(store.resp).length>=Q.length; }
+
+function liberar(){
+  if(!todas()){ res("⚠️ Responda todas as 28 questões antes de ver o gabarito.","#a83232"); return; }
+  const code=(document.getElementById('codeInput').value||"").trim().toUpperCase();
+  const re=/^SIM-\d{2}-[A-HJ-NP-Z]{2}$/;
+  if(!re.test(code)){ res("⚠️ Código no formato errado. Use <b>SIM-XX-YY</b> (XX número, YY 2 letras sem I e O).","#a83232"); return; }
+  store.liberado=true; save(); mostrarGabarito();
+  res("✅ Gabarito liberado! Você acertou <b>"+contarAcertos()+" de "+Q.length+"</b>. 🎉","#20694a");
+}
+function res(t,c){ const r=document.getElementById('result'); r.innerHTML=t; r.style.color=c; }
+function mostrarGabarito(){
+  Q.forEach((qq,i)=>{
+    const sel=store.resp[i];
+    qq.opts.forEach((o,optIdx)=>{
+      const el=document.getElementById('o_'+i+'_'+optIdx); const ex=document.getElementById('e_'+i+'_'+optIdx);
+      if(!el)return; el.classList.remove('sel');
+      if(o.ok){ el.classList.add('correct'); ex.className="expl g show"; ex.textContent="✔ "+o.why; }
+      else if(sel===optIdx){ el.classList.add('wrong'); ex.className="expl b show"; ex.textContent="✗ "+o.why; }
+      else { ex.className="expl b show"; ex.textContent="✗ "+o.why; }
+      el.onclick=null;
+    });
+  });
+}
+
+function exportar(){ const d=JSON.stringify(store,null,2); const b=new Blob([d],{type:"application/json"}); const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download="simulado-geografia-6ano.json"; a.click(); }
+function abrirImport(){ document.getElementById('importModal').classList.add('show'); }
+function fecharImport(){ document.getElementById('importModal').classList.remove('show'); }
+function fazerImport(){ try{ store=JSON.parse(document.getElementById('importText').value); if(!store.resp)store.resp={}; save(); render(); if(store.liberado)mostrarGabarito(); fecharImport(); }catch(e){ document.getElementById('importText').value="⚠️ Texto inválido.\n"+document.getElementById('importText').value; } }
+function zerar(){ store={resp:{}}; try{localStorage.removeItem(KEY);}catch(e){} save(); render(); res("",""); document.getElementById('codeInput').value=""; }
+
+load(); render();
+if(store.quando) document.getElementById('saveInfo').textContent="Salvo "+store.quando;
+if(store.liberado) mostrarGabarito();
+</script>
+</body>
+</html>
