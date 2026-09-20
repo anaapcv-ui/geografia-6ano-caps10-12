@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resumo — Geografia 6º ano | GeoAventura 🌍</title>
+<style>
+  :root{--cream:#fdfaf3;--ink:#2c3a2f;--green:#2e8b57;--green-d:#20694a;--blue:#2f80c4;--orange:#e08a2e;--orange-d:#b96d17;--terra:#c0562f;--card:#fff;--line:#e6e0d2;--soft:#f3efe3;--sun:#f6c453}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Segoe UI',system-ui,sans-serif;background:var(--cream);color:var(--ink);font-size:18px;line-height:1.6}
+  .wrap{max-width:960px;margin:0 auto;padding:16px}
+  header.top{background:linear-gradient(135deg,#f6c453,#e08a2e);color:#4a2e08;border-radius:20px;padding:26px 24px;margin:12px 0 8px;box-shadow:0 6px 20px rgba(224,138,46,.25)}
+  header.top h1{margin:0 0 6px;font-size:28px}
+  header.top p{margin:0;font-size:16px}
+  nav.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+  nav.tabs a{background:#fff;border:2px solid var(--line);border-radius:999px;padding:8px 14px;text-decoration:none;color:var(--ink);font-weight:600;font-size:15px}
+  nav.tabs a.active{background:var(--orange);border-color:var(--orange);color:#fff}
+  h2.sec{margin:26px 0 6px;color:var(--terra);border-bottom:3px solid var(--sun);padding-bottom:4px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+  .flip{perspective:1000px;height:170px;cursor:pointer}
+  .flip .inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+  .flip.on .inner{transform:rotateY(180deg)}
+  .flip .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:16px;padding:14px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.06)}
+  .flip .front{background:#fff;border:2px solid var(--orange)}
+  .flip .front .t{font-weight:700;font-size:19px;color:var(--orange-d)}
+  .flip .front .hint{font-size:13px;color:#9a9a9a;margin-top:8px}
+  .flip .back{background:#fff7e8;border:2px solid var(--sun);transform:rotateY(180deg);font-size:15px;overflow:auto}
+  .postit{background:#fff6c8;border-radius:6px;padding:14px 16px;margin:14px 0;box-shadow:2px 3px 8px rgba(0,0,0,.08);border-left:6px solid var(--sun)}
+  .postit b{color:var(--orange-d)}
+  .alerta{background:#fdeeee;border-left:6px solid var(--terra);border-radius:6px;padding:12px 16px;margin:14px 0}
+  .alerta b{color:var(--terra)}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin:14px 0}
+  table.gloss{width:100%;border-collapse:collapse;font-size:16px}
+  table.gloss th,table.gloss td{border:1px solid var(--line);padding:9px;text-align:left;vertical-align:top}
+  table.gloss th{background:var(--soft)}
+  table.gloss td:first-child{font-weight:700;color:var(--orange-d);white-space:nowrap}
+  .progress{position:sticky;top:0;background:var(--cream);padding:8px 0;z-index:5}
+  .bar{height:12px;background:#eee;border-radius:999px;overflow:hidden}
+  .bar>div{height:100%;background:linear-gradient(90deg,var(--sun),var(--orange));width:0}
+  .footer-nav{display:flex;justify-content:space-between;margin:20px 0;gap:10px;flex-wrap:wrap}
+  .footer-nav a{background:var(--orange);color:#fff;text-decoration:none;border-radius:12px;padding:12px 18px;font-weight:700}
+  small.muted{color:#8a8674}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>🗺️ Resumo — GeoAventura 🌍</h1>
+    <p>Geografia · 6º ano A · Colégio Coração Feliz · Capítulos 10, 11 e 12</p>
+    <p>Cartas para virar, dicas em post-its e um glossário para revisar antes da prova (29/09). ✨</p>
+  </header>
+  <nav class="tabs">
+    <a href="index.html">🏠 Início</a>
+    <a href="leitura-guiada.html">📖 Leitura Guiada</a>
+    <a href="quiz.html">🎯 Quiz</a>
+    <a class="active" href="resumo.html">🗺️ Resumo</a>
+    <a href="simulado.html">📝 Simulado</a>
+  </nav>
+
+  <div class="progress"><div class="bar"><div id="pbar"></div></div>
+    <small class="muted" id="ptxt">Role até o fim para revisar tudo 🌱</small></div>
+
+  <h2 class="sec">🌍 Capítulo 10 — Tempo geológico e dinâmica da Terra</h2>
+  <div class="cards">
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Tempo geológico</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">O tempo de vida da Terra (~4,6 bilhões de anos), medido em milhões e bilhões de anos. Bem diferente do tempo do relógio!</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Tabela geológica</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">Organiza a história da Terra em éons, eras e períodos. Era mais recente = Cenozoica (últimos 66 milhões de anos).</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Pangeia</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">Supercontinente único (Era Mesozoica). Separou-se em Gondwana e Laurásia. Da separação da Gondwana surgiu o oceano Atlântico.</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Deriva continental</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">Ideia de Alfred Wegener: os continentes se movem. Pistas: encaixe dos contornos e fósseis iguais em continentes distantes.</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Camadas da Terra</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">Crosta (rochosa), manto (magma) e núcleo (externo líquido / interno sólido). Litosfera = crosta + topo do manto; astenosfera = manto abaixo dela.</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Placas tectônicas</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">~50 pedaços da litosfera que deslizam sobre a astenosfera, movidos pelas correntes de convecção. América e África se afastam ~3 cm/ano.</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">3 movimentos</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back"><b>Transformante</b>: raspam de lado (terremotos). <b>Divergente</b>: afastam (Dorsal Mesoatlântica). <b>Convergente</b>: chocam (cordilheiras, tsunamis).</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Fossas oceânicas</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">Pontos mais fundos do oceano, nas zonas de subducção. A mais famosa: fossa das Marianas (~11 km).</div></div></div>
+  </div>
+
+  <div class="postit">📌 <b>Dica de prova:</b> decore a ordem das camadas de fora para dentro: <b>Crosta → Manto → Núcleo</b>. E lembre: <b>litosfera</b> é a parte DURA (crosta + topo do manto).</div>
+  <div class="alerta">⚠️ <b>Pegadinha:</b> <b>maremoto</b> é o tremor no fundo do mar; <b>tsunami</b> é a onda gigante que ele gera. Não são sinônimos!</div>
+
+  <h2 class="sec">🏔️ Capítulo 11 — Relevo: agentes, estruturas e formas</h2>
+  <div class="cards">
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Agentes internos</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">Endógenos: vêm de DENTRO = vulcanismo + tectonismo. Constroem o relevo (montanhas, vulcões).</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Agentes externos</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">Exógenos: agem por FORA = vento, água, temperatura, vegetação, ser humano. Desgastam/esculpem o relevo.</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Magma x Lava</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">Mesmo material (rocha derretida, +1000 °C). Magma = preso dentro da Terra. Lava = já saiu na superfície.</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Dobramentos</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">Placas se chocam, uma mergulha (subducção) e a outra dobra para cima = cordilheiras (Himalaia, Andes, Alpes).</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Falhamentos</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">A placa se quebra e move na vertical. <b>Graben</b> = desce (rebaixa). <b>Horst</b> = sobe. Ex.: Serra da Mantiqueira / Vale do Paraíba.</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Intemperismo físico</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">A rocha se QUEBRA em pedaços (sem mudar a composição): gelo, água, raízes, vento (erosão eólica), variação de temperatura.</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Intemperismo químico</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">A rocha MUDA de composição ao reagir com ar e água. Ex.: cavernas em calcário, formadas pela chuva com ácido carbônico.</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Escudos cristalinos</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">Crátons / maciços antigos: estruturas MAIS ANTIGAS (Pré-cambriano), rochas duras. Ricos em minerais metálicos (ferro).</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Bacias sedimentares</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">Áreas rebaixadas com rochas sedimentares. É onde estão o PETRÓLEO e o CARVÃO MINERAL.</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Formas de relevo</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back"><b>Planalto</b>: alto e plano. <b>Planície</b>: plana, acumula sedimentos. <b>Depressão</b>: mais baixa que o entorno (absoluta = abaixo do nível do mar; relativa = acima).</div></div></div>
+  </div>
+
+  <div class="postit">📌 <b>Dica de prova:</b> agente <b>rápido</b> = vulcanismo (muda tudo em horas!). Agentes externos = <b>lentos</b>, mas constantes.</div>
+  <div class="alerta">⚠️ <b>Pegadinha:</b> <b>Graben desce, Horst sobe.</b> Uma frase para não esquecer: "o graben cai no <u>grão</u>de buraco". 😉</div>
+
+  <h2 class="sec">🌱 Capítulo 12 — Solo: formação e utilização</h2>
+  <div class="cards">
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">O que é o solo</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">Camada porosa da superfície, feita de minerais das rochas desgastadas + água, ar, matéria orgânica e seres vivos.</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Húmus</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">Parte do solo rica em matéria orgânica e fertilidade. Microrganismos e minhocas ajudam a formá-lo.</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Horizontes</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">Camadas do solo: O e A (superficiais, férteis), E (clara, perde minerais), B (acumula minerais por percolação), C (transição para a rocha).</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Erosão</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">Retirada e transporte da camada de cima do solo (água + gravidade). Piora com desmatamento; causa assoreamento dos rios e voçorocas.</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Desertificação x Arenização</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">Desertificação: solo perde umidade/fertilidade (semiárido NE). Arenização: excesso de areia (Pampas/RS).</div></div></div>
+    <div class="flip" onclick="this.classList.toggle('on')"><div class="inner">
+      <div class="face front"><div class="t">Conservação do solo</div><div class="hint">clique para virar 🔄</div></div>
+      <div class="face back">Curvas de nível, rotação de culturas, plantio direto na palha e agrofloresta (plantas rasteiras + arbustos + árvores juntos).</div></div></div>
+  </div>
+
+  <div class="postit">📌 <b>Dica de prova:</b> os horizontes do solo, de cima para baixo, são <b>O, A, E, B, C</b>. Uma frase boba para lembrar a ordem: "<b>O A</b>mor <b>E B</b>om, <b>C</b>laro!" 💛</div>
+  <div class="alerta">⚠️ <b>Pegadinha:</b> <b>lixiviação</b> = a chuva "lava" e leva minerais para baixo (não é o mesmo que desertificação!).</div>
+
+  <div class="panel">
+    <h2 class="sec" style="margin-top:6px">📚 Glossário rápido</h2>
+    <table class="gloss">
+      <tr><th>Palavra</th><th>O que significa</th></tr>
+      <tr><td>Tempo geológico</td><td>Tempo de vida da Terra, contado em milhões e bilhões de anos.</td></tr>
+      <tr><td>Litosfera</td><td>Camada dura da Terra: crosta + topo do manto (dividida em placas).</td></tr>
+      <tr><td>Astenosfera</td><td>Parte do manto, logo abaixo da litosfera, onde as placas deslizam.</td></tr>
+      <tr><td>Correntes de convecção</td><td>Movimento do magma (sobe quente, desce frio) que move as placas.</td></tr>
+      <tr><td>Subducção</td><td>Quando uma placa mergulha por baixo de outra.</td></tr>
+      <tr><td>Maremoto / Tsunami</td><td>Maremoto = tremor no fundo do mar; tsunami = a onda gigante gerada por ele.</td></tr>
+      <tr><td>Intemperismo</td><td>Desgaste das rochas pelos agentes externos (físico ou químico).</td></tr>
+      <tr><td>Graben / Horst</td><td>No falhamento: graben = bloco que desce; horst = bloco que sobe.</td></tr>
+      <tr><td>Escudo cristalino</td><td>Estrutura de relevo mais antiga, de rochas duras (cráton).</td></tr>
+      <tr><td>Percolação</td><td>Descida lenta da água pelo solo, levando minerais para camadas mais fundas.</td></tr>
+      <tr><td>Húmus</td><td>Parte do solo rica em matéria orgânica e fertilidade.</td></tr>
+      <tr><td>Voçoroca</td><td>Grande "buracão" causado pela erosão em solo exposto.</td></tr>
+      <tr><td>Agrofloresta</td><td>Plantar juntos vários tipos de vegetação (rasteira, arbusto e árvore).</td></tr>
+    </table>
+  </div>
+
+  <div class="footer-nav">
+    <a href="quiz.html">← Quiz</a>
+    <a href="simulado.html">Ir para o Simulado →</a>
+  </div>
+  <p><small class="muted">Feito com carinho para o(a) jovem aprendiz. Fonte: Callis Geografia 6 – Livro 1 (P+), caps 10–12.</small></p>
+</div>
+<script>
+  // barra de progresso de rolagem (só visual; não grava tempo)
+  function upd(){
+    const h=document.documentElement;
+    const max=h.scrollHeight-h.clientHeight;
+    const p=max>0?Math.min(100,Math.round(h.scrollTop/max*100)):100;
+    document.getElementById('pbar').style.width=p+"%";
+    document.getElementById('ptxt').textContent = p>=95?"Revisão completa! 🎉 Você é um(a) explorador(a) da Geografia.":("Revisão: "+p+"%");
+    // grava máximo de rolagem para o relatório dos pais
+    try{
+      const K="geo6_caps10-12_resumo_v1"; let s={}; const r=localStorage.getItem(K); if(r)s=JSON.parse(r);
+      if(!s.maxScroll||p>s.maxScroll){ s.maxScroll=p; s.quando=new Date().toLocaleString('pt-BR'); localStorage.setItem(K,JSON.stringify(s)); }
+    }catch(e){}
+  }
+  window.addEventListener('scroll',upd); window.addEventListener('resize',upd); upd();
+</script>
+</body>
+</html>
